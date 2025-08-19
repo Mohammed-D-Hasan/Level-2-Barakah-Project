@@ -10,6 +10,7 @@
         @theme {
         --color-clifford: #da373d;
         --color-dodgerbue: dodgerblue;
+        --color-gold:gold;
       }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
@@ -31,14 +32,14 @@
                             </svg>
                         </div>
                         <ul tabindex="0"
-                            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            <li><a>Home</a></li>
-                            <li><a>Products</a></li>
-                            <li><a>Categories</a></li>
-                            <li><a>About</a></li>
+                            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 border ">
+                            <li><a href="#" class="text-red-400">Home</a></li>
+                            <li><a href="#" class="text-red-400">Products</a></li>
+                            <li><a href="#" class="text-red-400">Categories</a></li>
+                            <li><a href="#" class="text-red-400">About</a></li>
                         </ul>
                     </div>
-                    <a class="btn btn-ghost text-xl bg-sky-300">
+                    <a class="btn btn-ghost text-xl bg-sky-300 hidden md:block">
                         TechCore Store
                     </a>
                 </div>
@@ -51,14 +52,33 @@
                     </ul>
                 </div>
                 <div class="navbar-end flex gap-2">
-                    <a class="btn"><i class="fas fa-heart"></i></a>
+                    <a class="btn"><i class="far fa-heart"></i></a>
                     <a class="btn"><i class="fas fa-shopping-cart"></i></a>
                 </div>
             </div>
         </div>
     </header>
 
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <section
+        class="hero h-120 bg-[url('img/bg.jfif')]  bg-cover bg-center bg-no-repeat bg-black/70 bg-blend-color  flex flex-col justify-center gap-3 container-sm lg:contanier-lg">
+        <div class="container md:p-5">
+            <div class="hero-content backdrop-blur-sm shadow-lg bg-opacity-100 border-0 md:border  rounded-lg border-white h-fit flex flex-col gap-5 md:flex-row justify-center md:justify-around ">
+                <div
+                    class="hero-text w-fit  flex gap-5 text-center card p-6">
+                    <h1 class="text-xl text-white md:text-4xl font-bold ">Discover Amazing Products</h1>
+                    <p class="text-white" id="typing-text"></p>
+                    <a
+                        class="w-fit mx-auto btn btn-primary bg-transparent  border-white rounded-xl shadow-md hover:shadow-white">Shop
+                        Now</a>
+                </div>
+                <div class="hero-img flex justify-center w-100" id="hero-img-slider">
+                    <img src="img/hero_slider/hero2.png" class="h-50" alt="hero-section-img" id="hero-img">
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
