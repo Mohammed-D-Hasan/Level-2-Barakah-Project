@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Federant&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="css/all.min.css">
     <style type="text/tailwindcss">
@@ -12,6 +15,13 @@
         --color-dodgerbue: dodgerblue;
         --color-gold:gold;
       }
+    </style>
+    <style>
+        .federant-regular {
+            font-family: "Federant", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -36,19 +46,19 @@
                             <li><a href="#" class="text-red-400">Home</a></li>
                             <li><a href="#" class="text-red-400">Products</a></li>
                             <li><a href="#" class="text-red-400">Categories</a></li>
-                            <li><a href="#" class="text-red-400">About</a></li>
+                            <li><a href="#about" class="text-red-400">About</a></li>
                         </ul>
                     </div>
-                    <a class="btn btn-ghost text-xl bg-sky-300 hidden md:block">
+                    <a class="p-2 text-xl text-white rounded-lg bg-gray-800 hidden md:block federant-regular" href="#">
                         TechCore Store
                     </a>
                 </div>
                 <div class="navbar-center hidden lg:flex">
                     <ul class="menu menu-horizontal px-1 gap-5">
-                        <li><a>Home</a></li>
-                        <li><a>Products</a></li>
-                        <li><a>Categories</a></li>
-                        <li><a>About</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Categories</a></li>
+                        <li><a href="#about">About</a></li>
                     </ul>
                 </div>
                 <div class="navbar-end flex gap-2">
@@ -61,24 +71,175 @@
 
     <section
         class="hero h-120 bg-[url('img/bg.jfif')]  bg-cover bg-center bg-no-repeat bg-black/70 bg-blend-color  flex flex-col justify-center gap-3 container-sm lg:contanier-lg">
-        <div class="container md:p-5">
-            <div class="hero-content backdrop-blur-sm shadow-lg bg-opacity-100 border-0 md:border  rounded-lg border-white h-fit flex flex-col gap-5 md:flex-row justify-center md:justify-around ">
-                <div
-                    class="hero-text w-fit  flex gap-5 text-center card p-6">
+        <div class="container md:px-5">
+            <div
+                class="hero-content backdrop-blur-sm shadow-lg bg-opacity-100 border-0 md:border  rounded-lg border-white h-fit flex flex-col gap-5 md:flex-row justify-center md:justify-around ">
+                <div class="hero-text w-half  flex gap-5 text-center card p-6">
                     <h1 class="text-xl text-white md:text-4xl font-bold ">Discover Amazing Products</h1>
                     <p class="text-white" id="typing-text"></p>
                     <a
-                        class="w-fit mx-auto btn btn-primary bg-transparent  border-white rounded-xl shadow-md hover:shadow-white">Shop
+                        class="w-fit mx-auto btn btn-primary bg-transparent  border-white rounded-xl shadow-sm hover:shadow-white">Shop
                         Now</a>
                 </div>
-                <div class="hero-img flex justify-center w-100" id="hero-img-slider">
-                    <img src="img/hero_slider/hero2.png" class="h-50" alt="hero-section-img" id="hero-img">
+                <div class="hero-img flex flex-1 justify-center w-half" id="hero-img-slider">
+                    <img src="img/hero_slider/hero (1).png" class="h-50 w-half" alt="hero-section-img" id="hero-img">
                 </div>
             </div>
         </div>
-
     </section>
+    <section class="shopping my-5 bg-gray-50  py-4">
+        <div class="container px-5 mx-auto">
+            <div class="manage flex flex-col md:flex-row gap-3">
+                <div class="search flex-1 relative border border-gray-400 flex px-5 rounded-lg">
+                    <i class="fas fa-search text-gray-400 absolute top-1/2 left-2 -translate-y-1/2"></i>
+                    <input type="text" name="searchbar" placeholder="Search Products"
+                        class="w-full h-full p-2 border border-transparent focus:outline-0" id="searchbar">
+                </div>
+                <div class="display">
+                    <button class="btn"><i class="fas fa-table"></i></button>
+                    <button class="btn"><i class="fas fa-list"></i></button>
+                </div>
+                <div class="addition">
+                    <button class="addProduct btn btn-primary" id="addProduct"><span>+</span>Add Product</button>
+                </div>
+            </div>
+            <div class="products mt-8 p-4 flex flex-col md:flex-row items-center justify-center flex-wrap gap-4"
+                id="products">
+
+            </div>
+        </div>
+    </section>
+
+    <section class="about-us my-4 py-4" id="about">
+        <div class="container px-5 mx-auto">
+            <div class="heading w-full text-center mb-6" data-aos="fade-up" data-aos-duration="1000">
+                <p class="text-lg">About us</p>
+                <h1 class="font-bold text-xl capitalize text-gray-800">Learn more about us</h1>
+            </div>
+            <div class="about-us-content flex flex-col md:flex-row  gap-10 " data-aos="fade-up"
+                data-aos-duration="1000">
+                <div class="w-full md:w-half">
+                    <div class="about-us-img">
+                        <img src="img/about-1.jpg" alt="store" class="img w-full h-100 rounded-lg object-contain">
+                    </div>
+                    <div class="text-center flex flex-col justify-center py-2 mt-4 border rounded-lg">
+                        <h5 class="font-bold">Call Customer Service</h5>
+                        <p class="font-bold text-lg">+1 5589 554888 55</p>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-half ">
+                    <div class="about-us-disc mb-6">
+                        <p class="">At TechCore, we’re passionate about connecting people with the tools they need
+                            to power up their digital world. Performance, reliability, and honest pricing drive
+                            every device we sell.</p>
+                        <ul class="fa-ul ms-4">
+                            <li class="mb-3 mb-md-1"> <span class="fa-li">
+                                    <i class="fas fa-check-circle"> </i>
+                                </span>
+                                We handpick top-tier laptops and PCs that fit every need and budget.
+                            </li>
+                            <li class="mb-3 mb-md-1">
+                                <span class="fa-li">
+                                    <i class="fas fa-check-circle"> </i>
+                                </span>
+                                Our mission is to bring high performance to your home or office with zero hassle.
+                            </li>
+                            <li class="mb-1">
+                                <span class="fa-li">
+                                    <i class="fas fa-check-circle"> </i>
+                                </span>
+                                From gaming rigs to business notebooks, our team tests and reviews every product
+                                before it hits the shelf.
+                            </li>
+                        </ul>
+                        <p>With trusted brands, expert advice, and a focus on quality, TechCore is your go-to store
+                            for serious tech. Our team’s always ready to guide you, whether you’re upgrading or just
+                            starting out
+                        </p>
+                    </div>
+                    <div class="about-us-img rounded">
+                        <!-- <iframe class="rounded-lg" width="100%" height="315"
+                            src="https://www.youtube.com/embed/qsTauNWp-Hk?si=JPX-7-vnpAulu2Mb"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+                        <img src="img/about-1.jpg" class="rounded" alt="">
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <footer class=" footer bg-gray-800 text-white py-5">
+        <div class="container mx-auto px-4">
+            <div class="footer-info w-full flex flex-col md:flex-row justify-between align-center gap-8  p-4">
+                <div class="footer-card  row d-flex justify-content-between">
+                    <div class="ft-icon d-flex flex-column justify-content-start align-items-center">
+                        <i class="text-xl fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="ft-card-info d-flex flex-column ">
+                        <h5 class="m-0 fw-bold mb-2 fs-6">Address</h5>
+                        <p class="m-0">A108 Adam Street, New York, NY 535022</p>
+                    </div>
+                </div>
+                <div class="footer-card  row d-flex justify-content-between">
+                    <div class="ft-icon  d-flex flex-column justify-content-between align-items-center">
+                        <i class="text-xl fas fa-phone-alt"></i>
+                    </div>
+                    <div class="ft-card-info flex flex-col ">
+                        <h5 class="m-0 fw-bold mb-2 fs-6">Contact</h5>
+                        <p class="m-0">
+                        <p class="m-0"><span class="fw-bold">Phone:</span>+1 5589 55488 55</p>
+                        <p class="m-0"><span class="fw-bold">Email:</span>email@info.example</p>
+                        </p>
+
+                    </div>
+                </div>
+                <div class="footer-card  row d-flex justify-content-between">
+                    <div class="ft-icon  d-flex flex-column justify-content-start align-items-center">
+                        <i class="text-xl fas fa-clock"></i>
+                    </div>
+                    <div class="ft-card-info d-flex flex-column ">
+                        <h5 class="m-0 fw-bold mb-2 fs-6">Opening Hours</h5>
+                        <p class="m-0"><span class="fw-bold">Mon-Sat: </span>11AM-23PM; <span class="fw-bold">Sunday:
+                            </span>Closed </p>
+                    </div>
+                </div>
+                <div class="footer-card  mt-3 mt-md-0">
+                    <h5 class="m-0 fw-bold mb-3">Follow Us</h5>
+                    <p class="flex gap-4">
+                        <a href="#"
+                            class="flex p-2 w-10 h-10 justify-center items-center border border-white rounded-full hover:border-blue-500 hover:text-blue-400"><i
+                                class="text-xl fab fa-twitter"></i> </a>
+                        <a href="#"
+                            class="flex p-2 w-10 h-10 justify-center items-center border border-white rounded-full hover:border-blue-700 hover:text-blue-700"><i
+                                class="text-xl fab fa-facebook"></i> </a>
+                        <a href="#"
+                            class="flex p-2 w-10 h-10 justify-center items-center border border-white rounded-full hover:border-pink-500 hover:text-pink-400"><i
+                                class="text-xl fab fa-instagram"></i> </a>
+                        <a href="#"
+                            class="flex p-2 w-10 h-10 justify-center items-center border border-white rounded-full hover:border-blue-500 hover:text-blue-900"><i
+                                class="text-xl fab fa-linkedin"></i> </a>
+                    </p>
+                </div>
+            </div>
+            <div class="copyright text-center w-full border-top p-3 pb">
+                @copyright <a href="#hero" class="fw-bold">TechCore</a> All Rights Reserved
+            </div>
+        </div>
+    </footer>
     <script src="js/main.js"></script>
 </body>
 
 </html>
+
+
+
+
+
+
+
