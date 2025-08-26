@@ -15,6 +15,7 @@
         --color-dodgerbue: dodgerblue;
         --color-gold:gold;
       }
+      
     </style>
     <style>
         .federant-regular {
@@ -29,8 +30,8 @@
 </head>
 
 <body>
-    <header class="header border-bottom shadow">
-        <div class="container m-auto">
+    <header class="header border-bottom shadow-lg w-full fixed z-100 bg-white ">
+        <div class="container m-auto bg-white">
             <div class="navbar bg-base-100">
                 <div class="navbar-start">
                     <div class="dropdown mx-2">
@@ -62,8 +63,9 @@
                     </ul>
                 </div>
                 <div class="navbar-end flex gap-2">
-                    <a class="btn"><i class="far fa-heart"></i></a>
-                    <a class="btn"><i class="fas fa-shopping-cart"></i></a>
+                    <a class="btn relative" id="showWishList" title="Show Wish List"><span id="wishListNotification" class="absolute -top-1/2 right-0 translate-1/2 bg-red-500 text-xs flex justify-center items-center text-white p-2.5 h-3 w-3 rounded-full hidden"></span><i class="far fa-heart"></i></a>
+                    <a class="btn relative" id="showCart" title="Show Cart"><span id="cartNotification" class="absolute -top-1/2 right-0 translate-1/2 bg-red-500 text-xs flex justify-center items-center text-white p-2.5 h-3 w-3 rounded-full hidden"></span><i class="fas fa-shopping-cart"></i></a>
+                    <!-- <button id="toggleDarkOrLight" class="btn font-bold">O</button> -->
                 </div>
             </div>
         </div>
@@ -95,16 +97,15 @@
                     <input type="text" name="searchbar" placeholder="Search Products"
                         class="w-full h-full p-2 border border-transparent focus:outline-0" id="searchbar">
                 </div>
-                <div class="display">
-                    <button class="btn"><i class="fas fa-table"></i></button>
-                    <button class="btn"><i class="fas fa-list"></i></button>
+                <div class="displayStyle" id="displayStyle">
+                    <button class="btn bg-green-600 text-white" id="toggleGrid"><i class="fas fa-table"></i></button>
+                    <button class="btn" id="toggleList"><i class="fas fa-list"></i></button>
                 </div>
                 <div class="addition">
                     <button class="addProduct btn btn-primary" id="addProduct"><span>+</span>Add Product</button>
                 </div>
             </div>
-            <div class="products mt-8 p-4 flex flex-col md:flex-row items-center justify-center flex-wrap gap-4"
-                id="products">
+            <div class="products mt-8 p-4 flex flex-col md:flex-row items-center justify-center flex-wrap gap-4" id="products">
 
             </div>
         </div>
