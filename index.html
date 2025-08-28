@@ -14,6 +14,7 @@
         --color-clifford: #da373d;
         --color-dodgerbue: dodgerblue;
         --color-gold:gold;
+        /* --color-Dark:#2a2e2f; */
       }
       
     </style>
@@ -62,7 +63,7 @@
                         <li><a href="#about">About</a></li>
                     </ul>
                 </div>
-                <div class="navbar-end flex gap-2">
+                <div class="navbar-end flex gap-3">
                     <a class="btn relative" id="showWishList" title="Show Wish List"><span id="wishListNotification" class="absolute -top-1/2 right-0 translate-1/2 bg-red-500 text-xs flex justify-center items-center text-white p-2.5 h-3 w-3 rounded-full hidden"></span><i class="far fa-heart"></i></a>
                     <a class="btn relative" id="showCart" title="Show Cart"><span id="cartNotification" class="absolute -top-1/2 right-0 translate-1/2 bg-red-500 text-xs flex justify-center items-center text-white p-2.5 h-3 w-3 rounded-full hidden"></span><i class="fas fa-shopping-cart"></i></a>
                     <!-- <button id="toggleDarkOrLight" class="btn font-bold">O</button> -->
@@ -92,7 +93,7 @@
     <section class="shopping my-5 bg-gray-50  py-4">
         <div class="container px-5 mx-auto">
             <div class="manage flex flex-col md:flex-row gap-3">
-                <div class="search flex-1 relative border border-gray-400 flex px-5 rounded-lg">
+                <div class="search flex-1 relative border border-gray-400 flex px-5 rounded-lg" id="seachBar">
                     <i class="fas fa-search text-gray-400 absolute top-1/2 left-2 -translate-y-1/2"></i>
                     <input type="text" name="searchbar" placeholder="Search Products"
                         class="w-full h-full p-2 border border-transparent focus:outline-0" id="searchbar">
@@ -100,6 +101,9 @@
                 <div class="displayStyle" id="displayStyle">
                     <button class="btn bg-green-600 text-white" id="toggleGrid"><i class="fas fa-table"></i></button>
                     <button class="btn" id="toggleList"><i class="fas fa-list"></i></button>
+                    <!-- <button class="btn" id="train">WTF!!!!</button> -->
+                    <!-- <input type="text" name="" id="inp"> -->
+                    <!-- <p id="greet"></p> -->
                 </div>
                 <div class="addition">
                     <button class="addProduct btn btn-primary" id="addProduct"><span>+</span>Add Product</button>

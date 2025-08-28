@@ -292,6 +292,24 @@ const products = {
     ]
 };
 // console.log(products);
+// var wtf = document.getElementById('train');
+// wtf.addEventListener('click',(e)=>{
+//     console.log('WTF!!!!!!11');
+//     console.log(e);
+
+// })
+// window.addEventListener('keydown', function(e){
+//     // console.log(e);
+//     if(e.code == 'Space'){
+//         console.log('Space is pressed');
+//     }
+
+// })
+// var inp = document.getElementById('inp');
+// var grt = document.getElementById('greet');
+// inp.addEventListener('input',(e)=>{
+//     grt.innerText = "Hello" + e.target.value + ", how are you?"
+// })
 
 var productsSection = document.querySelector('#products')
 
@@ -300,6 +318,42 @@ let firstProduct = Object.values(products).map((el) => {
     return el[0]
 })
 
+//Check if objects properties are accessible
+// console.log(Object.values(firstProduct[0]));
+//Search Poducts
+
+
+
+firstProduct.push({
+    id: 4, name: "Gaming PC i9", description: "Beast gaming PC with Intel i9, RTX 4070, and water cooling.", price: 2100, category: "PC", brand: "MSI", stock: 5, rate: 4.8, images: [
+        "img/products/pcs/pc4/pc4 (1).jpg",
+        "img/products/pcs/pc4/pc4 (2).jpg",
+        "img/products/pcs/pc4/pc4 (3).jpg"
+    ]
+})
+firstProduct.push({
+    id: 28, name: "Budget Keyboard", description: "Affordable wired keyboard for daily use.", price: 20, category: "Keyboard", brand: "HP", stock: 30, rate: 4.1, images: [
+        "img/products/keyboards/keyboard4/keyboard4 (1).jpg",
+        "img/products/keyboards/keyboard4/keyboard4 (2).jpg",
+        "img/products/keyboards/keyboard4/keyboard4 (3).jpg"
+    ]
+})
+firstProduct.push({
+    id: 15, name: "UltraWide 34", description: "34-inch ultrawide for multitasking and design work.", price: 550, category: "Monitor", brand: "Samsung", stock: 8, rate: 4.6, images: [
+        "img/products/monitors/monitor3/monitor3 (1).jpg",
+        "img/products/monitors/monitor3/monitor3 (2).jpg",
+        "img/products/monitors/monitor3/monitor3 (3).jpg"
+    ]
+})
+firstProduct.push(
+    {
+        id: 9, name: "MacBook Air M2", description: "Apple laptop with M2 chip, 13-inch Retina display.", price: 1300, category: "Laptop", brand: "Apple", stock: 6, rate: 4.9, images: [
+            "img/products/laptops/laptop3/laptop3 (1).jpg",
+            "img/products/laptops/laptop3/laptop3 (2).jpg",
+            "img/products/laptops/laptop3/laptop3 (3).jpg"
+        ]
+    }
+)
 // console.log(firstProduct);
 
 // console.log(firstProduct);
@@ -319,19 +373,20 @@ function genFn(arrg, div) {
                     stars = stars + '<i class="fas fa-star-half-alt text-gold"></i>'
                 }
                 else {
-                    stars = stars + '<i class="far fa-star text-gold"></i>'
+                    stars = stars + '<i class="far fa-star text-gray-300"></i>'
                 }
             }
         }
         getRate(el)
-        // html:prosect md:flex-row  / js:product-card:md:w-[30%] flex-col / product-image:w-full/brand:hidden/cat:hidden/viewbtn:w-full/editbtns:
-        //generate cards
-        // var quantity = 1;
         var pcard = `
         <div class="card product-card bg-white w-full md:w-[30%] flex-col shadow-md p-3 rounded-lg relative border border-transparent transition-1 hover:border-red-500">
             <div class="edit absolute right-4 top-2">
                 <button class="btn"><i class="fas fa-edit text-gray-600"></i></button>
-                <button class="btn AddToWishList" data-id=${el.id} data-cat=${el.category}><i class="far fa-heart text-red-500"></i></button>
+                <button class="btn AddToWishList" data-id=${el.id} data-cat=${el.category}>${wishlist.some(item => item.id === el.id)
+                ? '<i class="fas fa-heart text-red-500"></i>'
+                : '<i class="far fa-heart text-red-500"></i>'
+
+            }</button>
             </div>
             <div class="productImage w-full flex justify-center items-center  h-full p-4">
                 <img id="pImg" data-imgOne="${el.images[0]}" data-imgTwo="${el.images[1]}" data-imgThree="${el.images[2]}" src="${el.images[0]}" alt="${el.name}" class="img w-full h-50 object-contain">
@@ -363,12 +418,14 @@ function genFn(arrg, div) {
         </div>
         `
         div.innerHTML += pcard;
-
+        AddToWishList();
+        viewDtls();
+        toggleView()
     })
 
 }
 
-genFn(firstProduct, productsSection);
+// genFn(firstProduct, productsSection);
 
 var detailsWindow = document.createElement('div');
 detailsWindow.className = 'dtlsWindow flex justify-center items-center fixed z-50 inset-0 bg-black/70 hidden'
@@ -376,16 +433,15 @@ detailsWindow.className = 'dtlsWindow flex justify-center items-center fixed z-5
 
 detailsWindow.innerHTML = `
 <div
-            class="dtlsWindowCard overflow-y-scroll overscroll-contain relative bg-white  w-[95%]  h-[75%] py-4 z-50 shadow-md p-3 rounded-lg flex flex-col lg:flex-row  justify-around items-center gap-1 ">
+            class="dtlsWindowCard overflow-y-scroll overscroll-contain relative bg-white  w-[95%]  h-[75%] py-4 z-50 shadow-md p-3 lg:p-3 rounded-lg flex flex-col lg:flex-row  justify-around items-center gap-4 ">
                         <button id="closeWindow" class="closeWindow btn absolute top-2 right-2 bg-red-500 text-white text-lg h-8 w-8 hover:bg-red-700">X</button>
 
-            <div class="productImage flex flex-col gap-2 h-[50%] justify-center items-center w-[100%] lg:w-[50%]  p-4">
-                <img src="" alt="" class="img mainproductimage w-full h-[60%] lg:h-full object-contain">
-                <div class="productImages  border-gray-300 flex justify-center w-[80%] gap-3 h-[40%]  rounded-lg p-1 md:p-2">  
-                              
-                    <img src="" alt="" class="thumbnail img p-1 md:p-2 border border-gray-400 rounded-lg  w-[30%] h-full object-contain">
-                    <img src="" alt="" class="thumbnail img p-1 md:p-2 border border-gray-400 rounded-lg  w-[30%] h-full object-contain">
-                    <img src="" alt="" class="thumbnail img p-1 md:p-2 border border-gray-400 rounded-lg  w-[30%] h-full object-contain">
+            <div class="productImage flex flex-col gap-2 h-[70%] justify-center items-center w-[100%] lg:w-[50%] lg:h-[100%] p-2 lg:p-4">
+                <img src="" alt="" class="img mainproductimage w-full h-[75%] lg:h-[70%] object-contain">
+                <div class="productImages  border-gray-300 flex  w-[80%] gap-3 !h-[30%] lg:h-[30%] rounded-lg ">  
+                    <img src="" alt="" class="thumbnail img p-1 md:p-2 border border-gray-400 rounded-lg  w-[32%] h-[100%] object-contain">
+                    <img src="" alt="" class="thumbnail img p-1 md:p-2 border border-gray-400 rounded-lg  w-[32%] h-[100%] object-contain">
+                    <img src="" alt="" class="thumbnail img p-1 md:p-2 border border-gray-400 rounded-lg  w-[32%] h-[100%] object-contain">
                 </div>
             </div>
             <div class="details  w-[100%]  flex flex-col gap-2">
@@ -404,12 +460,12 @@ detailsWindow.innerHTML = `
                     <span class="badge productCategory border border-gray-400 px-2 rounded-lg"></span>
                 </p>
                 <p>
-                    Stock: <span class="badge productStock border stock border-green-400 bg-green-400 text-white px-2 rounded-lg ml-4" value=''></span>
+                    Stock: <span class="badge productStock border stock border-green-400 bg-green-400 text-white px-2 rounded-lg" value=''></span>
                 </p>
                 <p class="flex justify-between gap-2 w-[30%]">
-                    Quantity: <button id="decrease" class="btn w-7 h-full text-lg">-</button> <input id="quantity" class="input w-20 text-center h-full text-lg" type="number" readonly value="" min="1" max="" ><button id="increase" class="btn w-7 h-full text-lg" >+</button>
+                    Quantity: <button id="decrease" class="btn w-7 h-full text-lg bg-red-500 text-white">-</button> <input id="quantity" class="input w-20 text-center h-full text-lg" type="number" readonly value="" min="1" max="" ><button id="increase" class="btn w-7 h-full text-lg text-white bg-green-500" >+</button>
                 </p>
-                <div class="AddToCart w-1/4">
+                <div class="AddToCart w-full lg:w-1/4">
                     <button class="AddToCartBtn btn btn-primary w-full ">Add to
                         cart </button>
                 </div>
@@ -432,74 +488,186 @@ function searchById(productCategory, productID) {
 document.body.appendChild(detailsWindow);
 
 //Fill details window with product data
-var viewDetailsBtn = document.querySelectorAll('.viewDetailsBtn');
-viewDetailsBtn.forEach((btn) => {
-    btn.addEventListener('click', () => {
-        let productID = parseInt(btn.getAttribute('data-id'));
-        let productCategory = (btn.getAttribute('data-category')).toLowerCase();
-        const foundProduct = searchById(productCategory, productID);
-        detailsWindow.querySelector('.mainproductimage').src = foundProduct.images[0];
-        detailsWindow.querySelector('.mainproductimage').alt = foundProduct.name;
-        var thumbnails = detailsWindow.querySelectorAll('.thumbnail')
-        for (let i = 0; i < thumbnails.length; i++) {
-            thumbnails[i].src = foundProduct.images[i];
-            thumbnails[i].alt = foundProduct.name;
-            thumbnails[i].classList.remove('ring-2', 'ring-blue-500')
-        }
-        thumbnails[0].classList.add('ring-2', 'ring-blue-500')
-        detailsWindow.querySelector('.productName').textContent = foundProduct.name;
-        detailsWindow.querySelector('.productDisc').textContent = foundProduct.description;
-        detailsWindow.querySelector('.productPrice').textContent = `$${foundProduct.price}`;
-        let card = btn.closest('.product-card');
-        var rateStars = card.querySelector('span.stars');
-        detailsWindow.querySelector('.productRate').innerHTML = `${rateStars.innerHTML} (${foundProduct.rate})`;
-        detailsWindow.querySelector('.productBrand').textContent = `Brand: ${foundProduct.brand}`;
-        detailsWindow.querySelector('.productCategory').textContent = `Category: ${foundProduct.category}`;
-        detailsWindow.querySelector('.productStock').textContent = `${foundProduct.stock} left`;
-        detailsWindow.classList.remove('hidden');
-        document.body.classList.add('overflow-hidden')
-        var AddToCartBtn = detailsWindow.querySelector('.AddToCartBtn')
-        AddToCartBtn.innerHTML = `Add to Cart`
 
-        /*HHHHHHHHHHH*/
-        var quantity = 1;
-        var total = quantity * foundProduct.price;
-        var quantityInput = detailsWindow.querySelector('#quantity');
-        quantityInput.value = quantity
-        console.log(quantity);
-        console.log(AddToCartBtn);
+function viewDtls() {
+    var viewDetailsBtn = document.querySelectorAll('.viewDetailsBtn');
+    viewDetailsBtn.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            //Search for the matching product
+            let productID = parseInt(btn.getAttribute('data-id'));
+            let productCategory = (btn.getAttribute('data-category')).toLowerCase();
+            const foundProduct = searchById(productCategory, productID);
+
+            detailsWindow.querySelector('.mainproductimage').src = foundProduct.images[0];
+            detailsWindow.querySelector('.mainproductimage').alt = foundProduct.name;
+            var thumbnails = detailsWindow.querySelectorAll('.thumbnail')
+            for (let i = 0; i < thumbnails.length; i++) {
+                thumbnails[i].src = foundProduct.images[i];
+                thumbnails[i].alt = foundProduct.name;
+                thumbnails[i].classList.remove('ring-2', 'ring-blue-500')
+            }
+            thumbnails[0].classList.add('ring-2', 'ring-blue-500')
+            detailsWindow.querySelector('.productName').textContent = foundProduct.name;
+            detailsWindow.querySelector('.productDisc').textContent = foundProduct.description;
+            detailsWindow.querySelector('.productPrice').textContent = `$${foundProduct.price}`;
+            let card = btn.closest('.product-card');
+            var rateStars = card.querySelector('span.stars');
+            detailsWindow.querySelector('.productRate').innerHTML = `${rateStars.innerHTML} (${foundProduct.rate})`;
+            detailsWindow.querySelector('.productBrand').textContent = `Brand: ${foundProduct.brand}`;
+            detailsWindow.querySelector('.productCategory').textContent = `Category: ${foundProduct.category}`;
+            detailsWindow.querySelector('.productStock').textContent = `${foundProduct.stock} left`;
+            detailsWindow.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden')
+            var AddToCartBtn = detailsWindow.querySelector('.AddToCartBtn')
+            AddToCartBtn.innerHTML = `Add to Cart`
+            AddToCartBtn.setAttribute('data-id', foundProduct.id);
+            AddToCartBtn.setAttribute('data-category', foundProduct.category)
 
 
-        var decreaseBtn = detailsWindow.querySelector('#decrease');
-        var increaseBtn = detailsWindow.querySelector('#increase');
-        console.log(decreaseBtn, increaseBtn);
-
-        decreaseBtn.onclick = () => {
-            quantity != 1 ? quantity-- : '';
-            quantityInput.value = quantity;
-            total = quantity * foundProduct.price;
-            AddToCartBtn.innerHTML = total
-        }
-
-        increaseBtn.onclick = () => {
-            quantity < foundProduct.stock ? quantity++ : '';
-            quantityInput.value = quantity;
-            total = quantity * foundProduct.price;
-            AddToCartBtn.innerHTML = `Add To Cart $${total}`
-
-        }
-        console.log(total);
-        AddToCartBtn.onclick = () => {
-            console.log(total);
-
+            buy(foundProduct)
+            showCart(cart)
+        })
+    })
+}
+// viewDtls()
+let cart = [];
+//Generate DOM in cart
+function showCart(cartArr) {
+    if (cartArr.length == 0) {
+        cartCard.innerHTML = `<p class="font-bold text-2xl w-full text-center text-gray-400">Your Shopping Cart 🛒 is empty</p>`
+        document.getElementById('cartNotification').classList.add('hidden');
+        return
+    }
+    cartCard.innerHTML = ``
+    cartArr.forEach((item,index) => {
+        cartCard.innerHTML +=
+            `
+            <div class="cartItem relative p-2 border border-gray-200 flex flex-col lg:flex-row gap-2 lg:gap-0 rounded-lg h-[30%] lg:h-[40%]">
+                <button class="btn removeFromCart  hover:bg-red-500 text-red-500 font-bold hover:text-white border-2 border-red-500 absolute top-1 right-1 w-5 h-5  z-10" title="Reomve Product From Cart"><i class="fas fa-trash-alt"></i></button>
+                <div class="cartItemImg w-full p-2 lg:w-[35%] flex justify-center h-[50%] lg:h-[100%]">
+                    <img src="${item.images[0]}" alt="${item.name}" class="img p-1 w-[90%] h-[75%%] object-contain">
+                </div>
+                <div class="cartItemInfo table w-full lg:w-[65%] lg:h-full flex flex-col h-fit">
+                    <div class="table-row !border-b-1 border-gray-500"><h1 class="table-cell font-bold text-sm">${item.name}</h1></div>
+                    <div class="table-row !border-b-1 border-gray-500"><span class="text-sm table-cell">Quantity: </span><span class="table-cell"><button class="btn w-7 h-full text-lg minus" data-index=${index}>-</button><i class=" text-gray-600 ">${item.quantity}</i><button class="btn w-7 h-full text-lg plus" data-index=${index}>+</button></span></div>
+                    <div class="table-row !border-b-1 border-gray-500"><span class="text-sm table-cell">Price Per Unit: </span><i class="table-cell  text-gray-600 ">${item.price}$</i></div>
+                    <div class="table-row !border-b-1 border-gray-500"><span class="text-sm table-cell">Total: </span><i class="table-cell  text-gray-600 font-bold">${item.quantity * item.price}$</i></div>
+                </div>
+            </div>
+        `
+    })
+    var minusBtns = cartCard.querySelectorAll('.minus');
+    minusBtns.forEach((minusBtn)=>{
+        minusBtn.onclick = ()=>{
+            var index = parseInt(minusBtn.getAttribute('data-index'));
+            cart[index].quantity!=1?cart[index].quantity--:''
+            showCart(cart);
         }
     })
-})
+    var plusBtns = cartCard.querySelectorAll('.plus');
+    plusBtns.forEach((plusBtn)=>{
+        plusBtn.onclick = ()=>{
+            var index = parseInt(plusBtn.getAttribute('data-index'));
+            cart[index].quantity<cart[index].stock?cart[index].quantity++:cart[index].quantity=cart[index].stock;
+            showCart(cart);
+        }
+    })
+
+    var removeFromCartBtn = cartCard.querySelectorAll('.removeFromCart');
+    removeFromCartBtn.forEach((btn, index) => {
+        btn.onclick = () => {
+            cart.splice(index, 1);
+            showCart(cart);
+        }
+    })
+    // var minus = cartCard.querySelector('#minus')
+    // console.log(minus);
+    // minus.onclick = ()=>{
+
+    // }
+
+}
+function buy(ProductToBuy) {
+    var AddToCartBtn = detailsWindow.querySelector('.AddToCartBtn')
+    AddToCartBtn.innerHTML = `Add To Cart`
+    var quantityInput = detailsWindow.querySelector('#quantity');
+    quantityInput.value = 1;
+    var total = quantityInput.value * ProductToBuy.price;
+
+    var decreaseBtn = detailsWindow.querySelector('#decrease');
+    var increaseBtn = detailsWindow.querySelector('#increase');
+    // var productToBuyStock = detailsWindow.querySelector('.productStock');
+    decreaseBtn.onclick = () => {
+        quantityInput.value != 1 ? quantityInput.value-- : '';
+        if (quantityInput.value < ProductToBuy.stock && increaseBtn.classList.contains('btn-disabled')) {
+            increaseBtn.classList.remove('btn-disabled')
+        }
+        total = quantityInput.value * ProductToBuy.price;
+        quantityInput.value == 1 ? AddToCartBtn.innerHTML = `Add To Cart` : AddToCartBtn.innerHTML = `Add To Cart $${total}`;
+    }
+
+    increaseBtn.onclick = () => {
+        quantityInput.value < ProductToBuy.stock ? quantityInput.value++ : increaseBtn.classList.add('btn-disabled');
+
+        total = quantityInput.value * ProductToBuy.price;
+        AddToCartBtn.innerHTML = `Add To Cart $${total}`
+        // productToBuyStock.innerHTML = `${ProductToBuy.stock - parseInt(quantityInput.value)} left`;
+    }
+
+    AddToCartBtn.onclick = () => {
+        // parseInt(quantityInput.value++);
+        var cartNotification = document.getElementById('cartNotification');
+        var eleIndex = cart.findIndex(product => product.id == ProductToBuy.id);
+
+        var addedQuantity = parseInt(quantityInput.value);
+        if (eleIndex === -1) {
+            addedQuantity > ProductToBuy.stock ? addedQuantity = ProductToBuy.stock : '';
+            ProductToBuy.quantity = addedQuantity;
+            cart.push(ProductToBuy);
+        }
+        else {
+            var overallQuantity = cart[eleIndex].quantity + addedQuantity;
+            overallQuantity > ProductToBuy.stock ? overallQuantity = ProductToBuy.stock : '';
+            cart[eleIndex].quantity = overallQuantity;
+        }
+
+        cartNotification.classList.remove('hidden')
+        cartNotification.innerText = cart.length;
+        showCart(cart)
+
+        let totalsArray = cart.map(purchasedProduct => {
+            return purchasedProduct.quantity * purchasedProduct.price;
+        });
+        var totalOfTotals = totalsArray.reduce((ToT, el) => {
+            return ToT + el;
+        })
+
+        //  `<p class="overallTotal">${totalOfTotals}</p>`
+        let quantitiesArray = cart.map(purchasedProduct => {
+            return purchasedProduct.quantity;
+        });
+        var bottomLineItems = quantitiesArray.reduce((sum, el) => {
+            return sum + el;
+        })
+        var bottomLine = document.createElement('p');
+        bottomLine.innerHTML = `<div class="table text-right p-2 border border-gray-200 rounded-lg"><div class="table-row"><span class="table-cell">Receipt Date: <b class="text-gray-600 text-xsm">${new Date()}</b></span><span class="table-cell">Overall Items: <b class="text-gray-600">${bottomLineItems}</b></span> <span class="table-cell">Overall Total: <b class="text-gray-600">${totalOfTotals}$</b></span></div></div>`
+        cartCard.append(bottomLine)
+        console.log(quantitiesArray);
+
+        // console.log(totalsArray);
+        console.log(totalOfTotals);
+
+    }
+
+}
 
 
+
+// Don't Close Window When Card Itself Is Clicked
 detailsWindow.querySelector('div.dtlsWindowCard').addEventListener('click', (e) => {
     e.stopPropagation();
 })
+//Close Cart Window
 detailsWindow.querySelector('#closeWindow').addEventListener('click', () => {
     detailsWindow.classList.add('hidden')
     document.body.classList.remove('overflow-hidden')
@@ -536,79 +704,84 @@ function selectImg() {
 selectImg();
 
 /*Toggle list or grid*/
-var displayStyle = document.getElementById('displayStyle');
-var toggleGrid = displayStyle.querySelector('#toggleGrid');
-var toggleList = displayStyle.querySelector('#toggleList');
-if (window.innerWidth <= 768) {
-    toggleGrid.classList.add('hidden')
-    toggleList.classList.add('hidden')
-}
-else {
-    toggleGrid.classList.remove('hidden')
-    toggleList.classList.remove('hidden')
-}
-var productCard = document.querySelectorAll('.product-card')
-var productCardImage = document.querySelectorAll('.productImage')
-var productCardDetails = document.querySelectorAll('.details')
+function toggleView() {
 
-var productBrandBadge = document.querySelectorAll('span.brand')
-var productCategoryBadge = document.querySelectorAll('span.category')
-toggleList.onclick = () => {
-    toggleGrid.classList.remove('bg-green-600', 'text-white')
-    toggleList.classList.add('bg-green-600', 'text-white')
-    productsSection.classList.remove('md:flex-row')
 
-    productCard.forEach(card => {
-        card.classList.remove('md:w-[30%]', 'flex-col')
-        card.classList.add('md:flex-row', '!w-[90%]')
-    });
-    productCardImage.forEach(imgDiv => {
-        imgDiv.classList.remove('w-full')
-        imgDiv.classList.add('w-1/2')
-    })
-    productCardDetails.forEach(detailsDiv => {
-        detailsDiv.classList.add('w-1/2')
-    })
+    var displayStyle = document.getElementById('displayStyle');
+    var toggleGrid = displayStyle.querySelector('#toggleGrid');
+    var toggleList = displayStyle.querySelector('#toggleList');
+    if (window.innerWidth <= 768) {
+        toggleGrid.classList.add('hidden')
+        toggleList.classList.add('hidden')
+    }
+    else {
+        toggleGrid.classList.remove('hidden')
+        toggleList.classList.remove('hidden')
+    }
+    var productCard = document.querySelectorAll('.product-card')
+    var productCardImage = document.querySelectorAll('.productImage')
+    var productCardDetails = document.querySelectorAll('.details')
 
-    productBrandBadge.forEach(badge => {
-        badge.classList.remove('hidden')
-    })
-    productCategoryBadge.forEach(badge => {
-        badge.classList.remove('hidden')
-    })
-    viewDetailsBtn.forEach(btn => {
-        btn.classList.remove('w-full')
-        btn.classList.add('w-1/2')
-    })
-}
+    var productBrandBadge = document.querySelectorAll('span.brand')
+    var productCategoryBadge = document.querySelectorAll('span.category')
 
-toggleGrid.onclick = () => {
-    toggleList.classList.remove('bg-green-600', 'text-white')
-    toggleGrid.classList.add('bg-green-600', 'text-white')
-    productsSection.classList.add('md:flex-row')
+    toggleList.onclick = () => {
+        toggleGrid.classList.remove('bg-green-600', 'text-white')
+        toggleList.classList.add('bg-green-600', 'text-white')
+        productsSection.classList.remove('md:flex-row')
 
-    productCard.forEach(card => {
-        card.classList.add('md:w-[30%]', 'flex-col')
-        card.classList.remove('md:flex-row',)
-        card.classList.remove('md:flex-row', '!w-[90%]')
-    });
-    productCardImage.forEach(imgDiv => {
-        imgDiv.classList.add('w-full')
-        imgDiv.classList.remove('w-1/2')
-    })
-    productCardDetails.forEach(detailsDiv => {
-        detailsDiv.classList.add('w-full')
-    })
-    productBrandBadge.forEach(badge => {
-        badge.classList.add('hidden')
-    })
-    productCategoryBadge.forEach(badge => {
-        badge.classList.add('hidden')
-    })
-    viewDetailsBtn.forEach(btn => {
-        btn.classList.add('w-full')
-        btn.classList.remove('w-1/4')
-    })
+        productCard.forEach(card => {
+            card.classList.remove('md:w-[30%]', 'flex-col')
+            card.classList.add('md:flex-row', '!w-[90%]')
+        });
+        productCardImage.forEach(imgDiv => {
+            imgDiv.classList.remove('w-full')
+            imgDiv.classList.add('w-1/2', 'h-[100%]', 'flex', 'flex-col', 'justify-center')
+        })
+        productCardDetails.forEach(detailsDiv => {
+            detailsDiv.classList.add('w-1/2')
+        })
+
+        productBrandBadge.forEach(badge => {
+            badge.classList.remove('hidden')
+        })
+        productCategoryBadge.forEach(badge => {
+            badge.classList.remove('hidden')
+        })
+        viewDetailsBtn.forEach(btn => {
+            btn.classList.remove('w-full')
+            btn.classList.add('w-1/2')
+        })
+    }
+
+    toggleGrid.onclick = () => {
+        toggleList.classList.remove('bg-green-600', 'text-white')
+        toggleGrid.classList.add('bg-green-600', 'text-white')
+        productsSection.classList.add('md:flex-row')
+
+        productCard.forEach(card => {
+            card.classList.add('md:w-[30%]', 'flex-col')
+            card.classList.remove('md:flex-row',)
+            card.classList.remove('md:flex-row', '!w-[90%]')
+        });
+        productCardImage.forEach(imgDiv => {
+            imgDiv.classList.add('w-full')
+            imgDiv.classList.remove('w-1/2')
+        })
+        productCardDetails.forEach(detailsDiv => {
+            detailsDiv.classList.add('w-full')
+        })
+        productBrandBadge.forEach(badge => {
+            badge.classList.add('hidden')
+        })
+        productCategoryBadge.forEach(badge => {
+            badge.classList.add('hidden')
+        })
+        viewDetailsBtn.forEach(btn => {
+            btn.classList.add('w-full')
+            btn.classList.remove('w-1/4')
+        })
+    }
 }
 
 /*Wishlist */
@@ -639,6 +812,7 @@ wishlistCard.addEventListener('click', (event) => {
     event.stopPropagation();
 })
 let wishlist = [];
+//Render Wishlist
 function showWishList() {
     wishlistCard.innerHTML = '';
     if (wishlist.length === 0) {
@@ -648,14 +822,17 @@ function showWishList() {
     }
     wishlist.forEach((ele) => {
         wishlistCard.innerHTML += `
-             <div class="wishListItem relative p-2 border border-gray-200 flex flex-col lg:flex-row gap-2 lg:gap-0 rounded-lg h-[30%] lg:h-[40%]">
+             <div class="wishListItem relative p-2 border border-gray-200 flex flex-col lg:flex-row gap-2 lg:gap-0 rounded-lg h-[30%] lg:h-[50%]">
                  <button class="btn removeFromWishList  hover:bg-red-500 text-red-500 font-bold hover:text-white border-2 border-red-500 absolute top-1 right-1 w-fit h-fit p-1" title="Reomve Product From Wish List"><i class="fas fa-trash-alt"></i></button>
-                 <div class="wishItemImg w-full p-2 lg:w-[25%] flex justify-center h-[50%] lg:h-[100%]">
-                     <img src="${ele.images[0]}" alt="${ele.name}" class="img p-1 w-[90%] h-[75%%] object-contain">
+                 <div class="wishItemImg w-full p-2 lg:w-[25%] flex justify-center h-[60%] lg:h-[100%]">
+                     <img src="${ele.images[0]}" alt="${ele.name}" class="img p-1 w-[90%] h-[100%] object-contain">
                  </div>
-                 <div class="wishItemInfo w-full lg:w-[75%] lg:h-full h-fit text-center">
-                     <h1 class="font-bold text-lg">${ele.name}</h1>
-                     <p><span></span></p>
+                 <div class="wishItemInfo w-full lg:w-[75%] lg:h-full h-fit flex flex-col justify-center">
+                     <h1 class="font-bold ">${ele.name}</h1>
+                    <p class="flex flex-col  gap-3">
+                        <span class="badge productBrand border border-gray-400 px-1 !text-sm rounded-lg w-fit">Brand: ${ele.brand}</span>
+                        <span class="badge productCategory border border-gray-400 px-1 text-sm rounded-lg">Category: ${ele.category}</span>
+                    </p>
                  </div>
              </div>`
     })
@@ -668,6 +845,7 @@ function showWishList() {
             var notification = document.getElementById('wishListNotification');
             notification.innerText = wishlist.length;
             wishlist.length === 0 ? notification.classList.add('hidden') : '';
+
             if (deletedItem) {
                 var loveBtns = document.querySelectorAll('.AddToWishList');
                 loveBtns.forEach(loveBtn => {
@@ -684,7 +862,7 @@ function showWishList() {
     notification.classList.remove('hidden');
     notification.innerText = wishlist.length > 9 ? '+9' : wishlist.length
 }
-
+//Add to Wishlist
 function AddToWishList() {
     var addToWishListBtns = document.querySelectorAll('.AddToWishList');
     // var notification = document.getElementById('wishListNotification');
@@ -715,53 +893,30 @@ AddToWishList()
 var cartWindow = document.createElement('div');
 cartWindow.className = 'fixed inset-0 bg-black/70 flex justify-center items-center hidden';
 document.body.appendChild(cartWindow);
-cartWindow.innerHTML = `<div class="cartCard bg-white flex flex-col gap-2 w-[75%] lg:w-1/2 h-[80%] lg:h-1/2 overflow-y-scroll p-4 rounded-lg"></div>`
+cartWindow.innerHTML = `<div class="cartCard bg-white flex flex-col gap-2 w-[75%] lg:w-1/2 h-[80%]  overflow-y-scroll p-4 rounded-lg"></div>`
 //Show Cart Window showCart
 var showCartBtn = document.getElementById('showCart');
 showCartBtn.onclick = () => {
     cartWindow.classList.remove('hidden')
     document.body.classList.add('overflow-hidden')
 }
+
 // Close Wishlist Window
 cartWindow.onclick = () => {
     cartWindow.classList.add('hidden');
     document.body.classList.remove('overflow-hidden')
 }
+
 // Don't Close Window When Card Itself Is Clicked
 var cartCard = document.querySelector('.cartCard')
-cartCard.innerHTML = `<p class="font-bold text-2xl w-full text-center text-gray-400">Your Shopping Cart 🛒 is empty</p>`
+cartCard.innerHTML = `
+<p class="font-bold text-2xl w-full text-center text-gray-400">Your Shopping Cart 🛒 is empty</p>
+`
 cartCard.addEventListener('click', (event) => {
     event.stopPropagation();
 })
 
-let cart = [];
-//Generate DOM in cart
-function showCart() {
-    if (cart.length == 0) {
-        cartCard.innerHTML = `<p class="font-bold text-2xl w-full text-center text-gray-400">Your Shopping Cart 🛒 is empty</p>`
-        document.getElementById('cartNotification').classList.add('hidden');
-        return
-    }
-    cart.forEach((item) => {
-        cartCard.innerHTML +=
-            `
-            <div class="cartItem relative p-2 border border-gray-200 flex flex-col lg:flex-row gap-2 lg:gap-0 rounded-lg h-[30%] lg:h-[40%]">
-                <button class="btn removeFromCart  hover:bg-red-500 text-red-500 font-bold hover:text-white border-2 border-red-500 absolute top-1 right-1 w-fit h-fit" title="Reomve Product From Cart"><i class="fas fa-trash-alt"></i></button>
-                <div class="cartItemImg w-full p-2 lg:w-[25%] flex justify-center h-[50%] lg:h-[100%]">
-                    <img src="${item.images[0]}" alt="${item.name}" class="img p-1 w-[90%] h-[75%%] object-contain">
-                </div>
-                <div class="cartItemInfo w-full lg:w-[75%] lg:h-full h-fit text-center">
-                    <h1 class="font-bold text-lg">${item.name}</h1>
-                    <p><span></span></p>
-                </div>
-            </div>
-        `
-    })
-}
-//Add to Cart
-function addToCart(){
 
-}
 
 
 
@@ -783,12 +938,45 @@ function addToCart(){
 //     // console.log(elements);
 //     elements.forEach((ele)=>{
 //         ele.classList.remove('bg-white');
-//         ele.classList.add('bg-gray-800','border','border-gray-100');
+//         ele.classList.add('bg-Dark','border','border-gray-100');
 //     })})
-// themeToggle.addEventListener('click', ()=>{
-//     var elements = document.querySelectorAll('.bg-gray-800');
-//     // console.log(elements);
-//     elements.forEach((ele)=>{
-//         ele.classList.remove('bg-gray-800','border','border-gray-100');
-//         ele.classList.add('bg-white');
-//     })})
+
+function search(input) {
+    // let prdcts = Object.values(firstProduct).flat();
+    // return searchedProdyct.filter(el => el.name.includes(input)||el.description.includes(input)||el.category.includes(input)||el.brand.includes(input)||el.price.includes(input))
+    // var  return prdcts.filter(el => el.name.includes(input) || el.description.includes(input))
+    let prdcts = firstProduct.filter((el) => {
+        // return el.name.toLowerCase().includes(input.toLowerCase())|| el.description.toLowerCase().includes(input.toLowerCase());
+        var userInput = input.trim().toLowerCase();
+        // return el.name.toLowerCase().includes(userInput);
+        return el.name.toLowerCase().includes(userInput) ||
+            el.description.toLowerCase().includes(userInput) ||
+            el.category.toLowerCase().includes(userInput) ||
+            el.brand.toLowerCase().includes(userInput) || el.price.toString().includes(userInput) || ''
+        // el.price.toLowerCase().includes(input.toLowerCase())
+
+
+    })
+    if (prdcts.length == 0) {
+        productsSection.innerHTML = `<p class="ring ring-gray-500 rounded-lg w-full p-3 text-center">Sorry, Product Not Found <span class="font-bold text-4xl text-red-500">:-( </span></p>`;
+    }
+    else {
+        productsSection.innerHTML = '';
+        genFn(prdcts, productsSection);
+        toggleView()
+        // viewDtls()
+        // console.log(prdcts);
+        // AddToWishList();
+    }
+
+
+}
+
+var searchBar = document.getElementById('searchbar');
+searchBar.addEventListener('input', () => {
+    var searchTxt = searchBar.value || '';
+    search(searchTxt)
+
+
+})
+genFn(firstProduct, productsSection);
