@@ -65,28 +65,32 @@ const products = {
                 "img/products/pcs/pc1/pc1 (1).jpg",
                 "img/products/pcs/pc1/pc1 (2).jpg",
                 "img/products/pcs/pc1/pc1 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 2, name: "Office PC i5", description: "Reliable office PC with Intel i5, 16GB RAM, 512GB SSD.", price: 750, category: "PC", brand: "Dell", stock: 12, rate: 4.3, images: [
                 "img/products/pcs/pc2/pc2 (1).jpg",
                 "img/products/pcs/pc2/pc2 (2).jpg",
                 "img/products/pcs/pc2/pc2 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 3, name: "Mini PC NUC", description: "Compact Intel NUC with i7 CPU and 16GB RAM.", price: 680, category: "PC", brand: "Intel", stock: 15, rate: 4.5, images: [
                 "img/products/pcs/pc3/pc3 (1).jpg",
                 "img/products/pcs/pc3/pc3 (2).jpg",
                 "img/products/pcs/pc3/pc3 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 4, name: "Gaming PC i9", description: "Beast gaming PC with Intel i9, RTX 4070, and water cooling.", price: 2100, category: "PC", brand: "MSI", stock: 5, rate: 4.8, images: [
                 "img/products/pcs/pc4/pc4 (1).jpg",
                 "img/products/pcs/pc4/pc4 (2).jpg",
                 "img/products/pcs/pc4/pc4 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
     ],
     // Laptops
@@ -96,28 +100,32 @@ const products = {
                 "img/products/laptops/laptop1/laptop1 (1).jpg",
                 "img/products/laptops/laptop1/laptop1 (2).jpg",
                 "img/products/laptops/laptop1/laptop1 (3).jpg"
-            ]
+            ],
+            discount: 0.2
         },
         {
             id: 8, name: "Ultrabook X13", description: "Slim ultrabook with Ryzen 5, 16GB RAM, and 512GB SSD.", price: 1100, category: "Laptop", brand: "Lenovo", stock: 9, rate: 4.5, images: [
                 "img/products/laptops/laptop2/laptop2 (1).jpg",
                 "img/products/laptops/laptop2/laptop2 (2).jpg",
                 "img/products/laptops/laptop2/laptop2 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 9, name: "MacBook Air M2", description: "Apple laptop with M2 chip, 13-inch Retina display.", price: 1300, category: "Laptop", brand: "Apple", stock: 6, rate: 4.9, images: [
                 "img/products/laptops/laptop3/laptop3 (1).jpg",
                 "img/products/laptops/laptop3/laptop3 (2).jpg",
                 "img/products/laptops/laptop3/laptop3 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 10, name: "Business Laptop i5", description: "Reliable business laptop with Intel i5, 8GB RAM.", price: 850, category: "Laptop", brand: "Dell", stock: 14, rate: 4.3, images: [
                 "img/products/laptops/laptop4/laptop4 (1).jpg",
                 "img/products/laptops/laptop4/laptop4 (2).jpg",
                 "img/products/laptops/laptop4/laptop4 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
     ],
 
@@ -128,21 +136,24 @@ const products = {
                 "img/products/monitors/monitor1/monitor1 (1).jpg",
                 "img/products/monitors/monitor1/monitor1 (2).jpg",
                 "img/products/monitors/monitor1/monitor1 (3).jpg"
-            ]
+            ],
+            discount: 0.3
         },
         {
             id: 14, name: "Office Monitor 24”", description: "24-inch FHD monitor with thin bezels.", price: 180, category: "Monitor", brand: "Dell", stock: 20, rate: 4.4, images: [
                 "img/products/monitors/monitor2/monitor2 (1).jpg",
                 "img/products/monitors/monitor2/monitor2 (2).jpg",
                 "img/products/monitors/monitor2/monitor2 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 15, name: "UltraWide Monitor 34", description: "34-inch ultrawide for multitasking and design work.", price: 550, category: "Monitor", brand: "Samsung", stock: 8, rate: 4.6, images: [
                 "img/products/monitors/monitor3/monitor3 (1).jpg",
                 "img/products/monitors/monitor3/monitor3 (2).jpg",
                 "img/products/monitors/monitor3/monitor3 (3).jpg"
-            ]
+            ],
+            discount: 0
         }
     ],
 
@@ -153,28 +164,32 @@ const products = {
                 "img/products/mice/mouse1/mouse1 (1).jpg",
                 "img/products/mice/mouse1/mouse1 (2).jpg",
                 "img/products/mice/mouse1/mouse1 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 20, name: "Wireless Mouse", description: "Compact wireless mouse with long battery life.", price: 30, category: "Mouse", brand: "Logitech", stock: 25, rate: 4.4, images: [
                 "img/products/mice/mouse2/mouse2 (1).jpg",
                 "img/products/mice/mouse2/mouse2 (2).jpg",
                 "img/products/mice/mouse2/mouse2 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 21, name: "Ergonomic Mouse", description: "Ergonomic mouse for office use, vertical design.", price: 45, category: "Mouse", brand: "Anker", stock: 18, rate: 4.5, images: [
                 "img/products/mice/mouse3/mouse3 (1).jpg",
                 "img/products/mice/mouse3/mouse3 (2).jpg",
                 "img/products/mice/mouse3/mouse3 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 22, name: "Budget Mouse", description: "Simple wired mouse for daily use.", price: 12, category: "Mouse", brand: "HP", stock: 40, rate: 4.1, images: [
                 "img/products/mice/mouse4/mouse4 (1).jpg",
                 "img/products/mice/mouse4/mouse4 (2).jpg",
                 "img/products/mice/mouse4/mouse4 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
     ],
 
@@ -185,28 +200,32 @@ const products = {
                 "img/products/keyboards/keyboard1/keyboard1 (1).jpg",
                 "img/products/keyboards/keyboard1/keyboard1 (2).jpg",
                 "img/products/keyboards/keyboard1/keyboard1 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 26, name: "Wireless Keyboard", description: "Slim wireless keyboard with rechargeable battery.", price: 50, category: "Keyboard", brand: "Logitech", stock: 18, rate: 4.4, images: [
                 "img/products/keyboards/keyboard2/keyboard2 (1).jpg",
                 "img/products/keyboards/keyboard2/keyboard2 (2).jpg",
                 "img/products/keyboards/keyboard2/keyboard2 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 27, name: "Gaming Keyboard", description: "Gaming keyboard with macro keys and RGB lighting.", price: 120, category: "Keyboard", brand: "Razer", stock: 10, rate: 4.7, images: [
                 "img/products/keyboards/keyboard3/keyboard3 (1).jpg",
                 "img/products/keyboards/keyboard3/keyboard3 (2).jpg",
                 "img/products/keyboards/keyboard3/keyboard3 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 28, name: "Budget Keyboard", description: "Affordable wired keyboard for daily use.", price: 20, category: "Keyboard", brand: "HP", stock: 30, rate: 4.1, images: [
                 "img/products/keyboards/keyboard4/keyboard4 (1).jpg",
                 "img/products/keyboards/keyboard4/keyboard4 (2).jpg",
                 "img/products/keyboards/keyboard4/keyboard4 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
     ],
 
@@ -217,28 +236,32 @@ const products = {
                 "img/products/coolingpads/coolingpad1/coolingpad1 (1).jpg",
                 "img/products/coolingpads/coolingpad1/coolingpad1 (2).jpg",
                 "img/products/coolingpads/coolingpad1/coolingpad1 (3).jpg"
-            ]
+            ],
+            discount: 0.5
         },
         {
             id: 30, name: "Slim Cooling Pad", description: "Portable slim cooling pad for laptops up to 15”.", price: 25, category: "CoolingPad", brand: "Havit", stock: 22, rate: 4.3, images: [
                 "img/products/coolingpads/coolingpad2/coolingpad2 (1).jpg",
                 "img/products/coolingpads/coolingpad2/coolingpad2 (2).jpg",
                 "img/products/coolingpads/coolingpad2/coolingpad2 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 31, name: "Heavy-Duty Cooling Pad", description: "Strong cooling pad for gaming laptops up to 17”.", price: 60, category: "CoolingPad", brand: "Thermaltake", stock: 10, rate: 4.5, images: [
                 "img/products/coolingpads/coolingpad3/coolingpad3 (1).jpg",
                 "img/products/coolingpads/coolingpad3/coolingpad3 (2).jpg",
                 "img/products/coolingpads/coolingpad3/coolingpad3 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 32, name: "Budget Cooling Pad", description: "Affordable cooling pad with dual fans.", price: 20, category: "CoolingPad", brand: "Zebronics", stock: 30, rate: 4.1, images: [
                 "img/products/coolingpads/coolingpad4/coolingpad4 (1).jpg",
                 "img/products/coolingpads/coolingpad4/coolingpad4 (2).jpg",
                 "img/products/coolingpads/coolingpad4/coolingpad4 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
     ],
 
@@ -249,28 +272,32 @@ const products = {
                 "img/products/printers/printer1/printer1 (1).jpg",
                 "img/products/printers/printer1/printer1 (2).jpg",
                 "img/products/printers/printer1/printer1 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 35, name: "Inkjet Printer", description: "High-resolution color inkjet printer for home use.", price: 120, category: "Printer", brand: "HP", stock: 18, rate: 4.3, images: [
                 "img/products/printers/printer2/printer2 (1).jpg",
                 "img/products/printers/printer2/printer2 (2).jpg",
                 "img/products/printers/printer2/printer2 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 36, name: "All-in-One Printer", description: "Print, scan, copy, fax – all-in-one machine.", price: 180, category: "Printer", brand: "Canon", stock: 10, rate: 4.4, images: [
                 "img/products/printers/printer3/printer3 (1).jpg",
                 "img/products/printers/printer3/printer3 (2).jpg",
                 "img/products/printers/printer3/printer3 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
         {
             id: 37, name: "Photo Printer", description: "Compact printer for high-quality photo prints.", price: 150, category: "Printer", brand: "Epson", stock: 14, rate: 4.6, images: [
                 "img/products/printers/printer4/printer4 (1).jpg",
                 "img/products/printers/printer4/printer4 (2).jpg",
                 "img/products/printers/printer4/printer4 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
     ],
     // Headphones
@@ -280,70 +307,49 @@ const products = {
                 "img/products/headphones/headphone1/headphone1 (1).jpg",
                 "img/products/headphones/headphone1/headphone1 (2).jpg",
                 "img/products/headphones/headphone1/headphone1 (3).jpg"
-            ]
+            ],
+            discount: 0.3
         },
         {
             id: 43, name: "Gaming Headset", description: "Wired gaming headset with surround sound.", price: 80, category: "Headphone", brand: "HyperX", stock: 15, rate: 4.6, images: [
                 "img/products/headphones/headphone2/headphone2 (1).jpg",
                 "img/products/headphones/headphone2/headphone2 (2).jpg",
                 "img/products/headphones/headphone2/headphone2 (3).jpg"
-            ]
+            ],
+            discount: 0
         },
     ]
 };
-// console.log(products);
-// var wtf = document.getElementById('train');
-// wtf.addEventListener('click',(e)=>{
-//     console.log('WTF!!!!!!11');
-//     console.log(e);
 
-// })
-// window.addEventListener('keydown', function(e){
-//     // console.log(e);
-//     if(e.code == 'Space'){
-//         console.log('Space is pressed');
-//     }
-
-// })
-// var inp = document.getElementById('inp');
-// var grt = document.getElementById('greet');
-// inp.addEventListener('input',(e)=>{
-//     grt.innerText = "Hello" + e.target.value + ", how are you?"
-// })
 
 var productsSection = document.querySelector('#products')
-
-
 let firstProduct = Object.values(products).map((el) => {
     return el[0]
 })
-
-//Check if objects properties are accessible
-// console.log(Object.values(firstProduct[0]));
-//Search Poducts
-
-
 
 firstProduct.push({
     id: 4, name: "Gaming PC i9", description: "Beast gaming PC with Intel i9, RTX 4070, and water cooling.", price: 2100, category: "PC", brand: "MSI", stock: 5, rate: 4.8, images: [
         "img/products/pcs/pc4/pc4 (1).jpg",
         "img/products/pcs/pc4/pc4 (2).jpg",
         "img/products/pcs/pc4/pc4 (3).jpg"
-    ]
+    ],
+    discount: 1
 })
 firstProduct.push({
     id: 28, name: "Budget Keyboard", description: "Affordable wired keyboard for daily use.", price: 20, category: "Keyboard", brand: "HP", stock: 30, rate: 4.1, images: [
         "img/products/keyboards/keyboard4/keyboard4 (1).jpg",
         "img/products/keyboards/keyboard4/keyboard4 (2).jpg",
         "img/products/keyboards/keyboard4/keyboard4 (3).jpg"
-    ]
+    ],
+    discount: 0
 })
 firstProduct.push({
     id: 15, name: "UltraWide 34", description: "34-inch ultrawide for multitasking and design work.", price: 550, category: "Monitor", brand: "Samsung", stock: 8, rate: 4.6, images: [
         "img/products/monitors/monitor3/monitor3 (1).jpg",
         "img/products/monitors/monitor3/monitor3 (2).jpg",
         "img/products/monitors/monitor3/monitor3 (3).jpg"
-    ]
+    ],
+    discount: 0
 })
 firstProduct.push(
     {
@@ -351,13 +357,9 @@ firstProduct.push(
             "img/products/laptops/laptop3/laptop3 (1).jpg",
             "img/products/laptops/laptop3/laptop3 (2).jpg",
             "img/products/laptops/laptop3/laptop3 (3).jpg"
-        ]
-    }
-)
-// console.log(firstProduct);
-
-// console.log(firstProduct);
-
+        ],
+        discount: 0.9
+    })
 
 function genFn(arrg, div) {
     arrg.map((el) => {
@@ -405,9 +407,7 @@ function genFn(arrg, div) {
                     <span id="pStock" class="badge border stock border-gray-400 w-fit px-2 rounded-lg " data-stock='${el.stock}'>${el.stock} left</span>
                 </p>
                 <p class="flex items-center gap-3">
-                    <span id="pPrice" class="text-3xl text-purple-500 font-bold">$${el.price}</span>
-
-
+                    ${el.discount != 0 ? `<span id="pPrice" class="text-3xl text-purple-500 font-bold">$${el.price - (el.price * el.discount)}</span><span class="oldPrice line-through text-xl text-gray-400">$${el.price}</span><span class="text-xl absolute top-0 left-0 bg-orange-600 p-2 rounded-tl-lg text-white opacity-80">${el.discount * 100}% Off</span>` : `<span id="pPrice" class="text-3xl text-purple-500 font-bold">$${el.price}</span>`}                
                 </p>
                             <div class="viewDetails">
                 <button id="viewDetailsBtn"
@@ -425,7 +425,7 @@ function genFn(arrg, div) {
 
 }
 
-// genFn(firstProduct, productsSection);
+
 
 var detailsWindow = document.createElement('div');
 detailsWindow.className = 'dtlsWindow flex justify-center items-center fixed z-50 inset-0 bg-black/70 hidden'
@@ -448,7 +448,7 @@ detailsWindow.innerHTML = `
                 <h1 class="productName text-xl font-bold " title=""></h1>
                 <p class="productDisc w-half" title=""></p>
                 <p class="flex items-center gap-3">
-                    <span class="productPrice text-3xl text-purple-500 font-bold"></span>
+                    <span class="productPrice flex gap-3 items-center"></span>
                 </p>
                 <p class="flex w-full">
                     <span class="productRate" name="rate">
@@ -507,9 +507,13 @@ function viewDtls() {
                 thumbnails[i].classList.remove('ring-2', 'ring-blue-500')
             }
             thumbnails[0].classList.add('ring-2', 'ring-blue-500')
+            //Fill Data
             detailsWindow.querySelector('.productName').textContent = foundProduct.name;
             detailsWindow.querySelector('.productDisc').textContent = foundProduct.description;
-            detailsWindow.querySelector('.productPrice').textContent = `$${foundProduct.price}`;
+            // detailsWindow.querySelector('.productPrice').textContent = `$${foundProduct.price}`;
+            detailsWindow.querySelector('.productPrice').innerHTML = `
+                ${foundProduct.discount != 0 ? `<span id="pPrice" class="text-3xl text-purple-500 font-bold">$${foundProduct.price - (foundProduct.price * foundProduct.discount)}</span><span class="oldPrice line-through text-xl text-gray-400">$${foundProduct.price}</span><span class="text-sm p-1 bg-orange-600 rounded-tl-lg rounded-br-lg text-white opacity-80">${foundProduct.discount * 100}% Off</span>` : `<span id="pPrice" class="text-3xl text-purple-500 font-bold">$${foundProduct.price}</span>`}
+            `;
             let card = btn.closest('.product-card');
             var rateStars = card.querySelector('span.stars');
             detailsWindow.querySelector('.productRate').innerHTML = `${rateStars.innerHTML} (${foundProduct.rate})`;
@@ -531,48 +535,80 @@ function viewDtls() {
 }
 // viewDtls()
 let cart = [];
+let purchasedItems = [];
+let wallet = 5000
 //Generate DOM in cart
 function showCart(cartArr) {
     if (cartArr.length == 0) {
-        cartCard.innerHTML = `<p class="font-bold text-2xl w-full text-center text-gray-400">Your Shopping Cart 🛒 is empty</p>`
+        cartCard.innerHTML = `<p class="relative font-bold text-2xl w-full text-center text-gray-400">Your Shopping Cart 🛒 is empty</p>`
         document.getElementById('cartNotification').classList.add('hidden');
         return
     }
     cartCard.innerHTML = ``
-    cartArr.forEach((item,index) => {
+    cartArr.forEach((item, index) => {
         cartCard.innerHTML +=
             `
             <div class="cartItem relative p-2 border border-gray-200 flex flex-col lg:flex-row gap-2 lg:gap-0 rounded-lg h-[30%] lg:h-[40%]">
-                <button class="btn removeFromCart  hover:bg-red-500 text-red-500 font-bold hover:text-white border-2 border-red-500 absolute top-1 right-1 w-5 h-5  z-10" title="Reomve Product From Cart"><i class="fas fa-trash-alt"></i></button>
+                <button class="btn removeFromCart  hover:bg-red-500 text-red-500 font-bold hover:text-white border-2 border-red-500 absolute top-1 right-1 w-5 h-5 p-3  z-10" title="Reomve Product From Cart"><i class="fas fa-trash-alt"></i></button>
                 <div class="cartItemImg w-full p-2 lg:w-[35%] flex justify-center h-[50%] lg:h-[100%]">
                     <img src="${item.images[0]}" alt="${item.name}" class="img p-1 w-[90%] h-[75%%] object-contain">
                 </div>
                 <div class="cartItemInfo table w-full lg:w-[65%] lg:h-full flex flex-col h-fit">
                     <div class="table-row !border-b-1 border-gray-500"><h1 class="table-cell font-bold text-sm">${item.name}</h1></div>
-                    <div class="table-row !border-b-1 border-gray-500"><span class="text-sm table-cell">Quantity: </span><span class="table-cell"><button class="btn w-7 h-full text-lg minus" data-index=${index}>-</button><i class=" text-gray-600 ">${item.quantity}</i><button class="btn w-7 h-full text-lg plus" data-index=${index}>+</button></span></div>
-                    <div class="table-row !border-b-1 border-gray-500"><span class="text-sm table-cell">Price Per Unit: </span><i class="table-cell  text-gray-600 ">${item.price}$</i></div>
-                    <div class="table-row !border-b-1 border-gray-500"><span class="text-sm table-cell">Total: </span><i class="table-cell  text-gray-600 font-bold">${item.quantity * item.price}$</i></div>
+                    <div class="table-row !border-b-1 border-gray-500"><span class="text-sm table-cell">Quantity: </span><span class=" flex items-center gap-2"><button class="btn w-7 h-1/2 text-lg minus" data-index=${index}>-</button><i class=" text-gray-600 font-bold">${item.quantity}</i><button class="btn w-7 h-1/2 text-lg plus" data-index=${index}>+</button></span></div>
+                    <div class="table-row !border-b-1 border-gray-500"><span class="text-sm table-cell">Price Per Unit: </span><i class="table-cell  text-gray-600 ">${item.price - (item.price * item.discount)}$</i></div>
+                    <div class="table-row !border-b-1 border-gray-500"><span class="text-sm table-cell">Discount Per Unit: </span><i class="table-cell  text-gray-600 ">${item.discount * 100}%</i></div>
+                    <div class="table-row !border-b-1 border-gray-500"><span class="text-sm table-cell">Total: </span><i class="table-cell  text-gray-600 font-bold">${item.quantity * (item.price - (item.price * item.discount))}$</i></div>
                 </div>
             </div>
         `
     })
     var minusBtns = cartCard.querySelectorAll('.minus');
-    minusBtns.forEach((minusBtn)=>{
-        minusBtn.onclick = ()=>{
+    minusBtns.forEach((minusBtn) => {
+        minusBtn.onclick = () => {
             var index = parseInt(minusBtn.getAttribute('data-index'));
-            cart[index].quantity!=1?cart[index].quantity--:''
+            cart[index].quantity != 1 ? cart[index].quantity-- : ''
+            // if (cart[index].quantity < cart[index].stock && pl .classList.contains('btn-disabled')) {
+            //     increaseBtn.classList.remove('btn-disabled')
+            // }
             showCart(cart);
         }
     })
     var plusBtns = cartCard.querySelectorAll('.plus');
-    plusBtns.forEach((plusBtn)=>{
-        plusBtn.onclick = ()=>{
+    plusBtns.forEach((plusBtn) => {
+        plusBtn.onclick = () => {
             var index = parseInt(plusBtn.getAttribute('data-index'));
-            cart[index].quantity<cart[index].stock?cart[index].quantity++:cart[index].quantity=cart[index].stock;
+            cart[index].quantity < cart[index].stock ? cart[index].quantity++ : cart[index].quantity = cart[index].stock;
             showCart(cart);
         }
     })
+    //tot
 
+    let totalsArray = cart.map(purchasedProduct => {
+        return purchasedProduct.quantity * (purchasedProduct.price - (purchasedProduct.price * purchasedProduct.discount));
+    });
+    var totalOfTotals = totalsArray.reduce((ToT, el) => {
+        return ToT + el;
+    })
+
+    let quantitiesArray = cart.map(purchasedProduct => {
+        return purchasedProduct.quantity;
+    });
+    var bottomLineItems = quantitiesArray.reduce((sum, el) => {
+        return sum + el;
+    })
+
+    var bottomLine = document.createElement('p');
+    bottomLine.innerHTML = `
+    <div class="table text-right p-2 border border-gray-200 rounded-lg">
+        <div class="table-row">
+            <span class="table-cell text-right text-xl"><i class="fas fa-receipt"></i></span>
+            <span class="table-cell text-right">Overall Items: <b class="text-gray-600">${bottomLineItems}</b></span>
+            <span class="table-cell text-right">Overall Total: <b class="text-gray-600">${totalOfTotals}$</b></span>
+        </div>
+    </div>`
+    cartCard.append(bottomLine)
+    //Remove item From Cart
     var removeFromCartBtn = cartCard.querySelectorAll('.removeFromCart');
     removeFromCartBtn.forEach((btn, index) => {
         btn.onclick = () => {
@@ -580,38 +616,138 @@ function showCart(cartArr) {
             showCart(cart);
         }
     })
-    // var minus = cartCard.querySelector('#minus')
-    // console.log(minus);
-    // minus.onclick = ()=>{
+    var placeOrder = document.createElement('div');
+    placeOrder.className = ('placeOrder w-full p-2 flex justify-center gap-2 border border-gray-200');
+    placeOrder.innerHTML = `
+    <button class="btn bg-red-500 text-white rounded-lg" title="Cancel Order" id="cancelOrder">Cancel Order</button>
+    <button class="btn bg-green-500 text-white rounded-lg" title="Place Order" id="PlaceOrder">Place Order</button>
+    `
+    cartCard.append(placeOrder)
+    //Clear Cart Pop Up 
+    var confirmClearCart = document.createElement('div');
+    confirmClearCart.className = ('confirmClearCart bg-gray-100 shadow-lg border border-blue-500 w-fit rounded-lg p-2 absolute left-1/2 top-1/2 -translate-1/2 hidden');
+    confirmClearCart.innerHTML = `
+        <p class="capitalize">
+        Are you sure you want to clear your cart?
+        </p>
+        <div class="w-full flex justify-center gap-2 p-2">
+            <button class="btn bg-green-500 text-white rounded-lg" id="YesCancelOrder">Yes</button>
+            <button class="btn bg-red-500 text-white rounded-lg" id="noCancelOrder">No</button>
+        </div>
+    `
+    cartCard.append(confirmClearCart)
+    //Show Cancel Order Pop Up
+    var cancelOrderBtn = cartCard.querySelector('#cancelOrder');
+    cancelOrderBtn.onclick = () => {
+        confirmClearCart.classList.remove('hidden')
+    }
+    //Cancel Order and Clear Cart
+    var yesCancelOrderBtn = cartCard.querySelector('#YesCancelOrder');
+    yesCancelOrderBtn.onclick = () => {
+        cart = [];
+        confirmClearCart.classList.add('hidden');
+        showCart(cart)
+    }
+    //Close Clear Cart Pop Up
+    var noCancelOrder = cartCard.querySelector('#noCancelOrder');
+    noCancelOrder.onclick = () => {
+        confirmClearCart.classList.add('hidden');
+    }
+    //Place Order Functionallity
+    //Show Warning Message If Balance Isn't Enough
+    var warningMsg = document.createElement('div');
+    warningMsg.className = 'bg-red-500 opacity-90 p-3 text-white'
+    warningMsg.innerHTML = `
+        <p>Sorry, Your Balance Isn't Enough</p>
+    `
+    //Confirm Place Order Pop Up
+    var confirmPlaceOrder = document.createElement('div');
+    confirmPlaceOrder.className = ('confirmPlaceOrder bg-gray-100 shadow-lg border border-blue-500 w-fit rounded-lg p-2 absolute left-1/2 top-1/2 -translate-1/2 hidden');
+    confirmPlaceOrder.innerHTML = `
+        <p class="capital">
+        Are you sure you want to place the order?
+        </p>
+        <div class="w-full flex justify-center gap-2 p-2">
+            <button class="btn bg-green-500 text-white rounded-lg" id="YesPlaceOrder">Yes</button>
+            <button class="btn bg-red-500 text-white rounded-lg" id="noPlaceOrder">No</button>
+        </div>
+    `
+    cartCard.append(confirmPlaceOrder)
+    //Close Place Order Pop Up
+    var noPlaceOrder = cartCard.querySelector('#noPlaceOrder');
+    noPlaceOrder.onclick = () => {
+        confirmPlaceOrder.classList.add('hidden');
+    }
+    //Show Warning Message If Balance Isn't Enough
+    var successMsg = document.createElement('div');
+    successMsg.className = 'bg-green-500 opacity-90 p-3 text-white'
+    successMsg.innerHTML = `
+        <p>Order Placed Successfuly</p>
+    `
 
-    // }
+    //proceed To Place Order 
+    var yesPlaceOrder = cartCard.querySelector('#YesPlaceOrder');
+    yesPlaceOrder.onclick = () => {
+        confirmPlaceOrder.classList.add('hidden');
+        purchasedItems = cart;
+        cart = [];
+        // console.log(purchasedItems);
+        // console.log(cart);
+        showCart(cart)
+        cartCard.append(successMsg)
+        setTimeout(() => {
+            successMsg.classList.add('hidden')
+        }, 2000);
+        purchasedItems.forEach((item) => {
+            var boughtItem = products[item.category.toLowerCase()].find(p => p.id == item.id);
+            boughtItem.stock = boughtItem.stock - item.quantity;
+            // console.log(boughtItem);
+            // console.log(products);
+            // console.log(firstProduct);
+            
+        })
+    }
+    //Show Place Order Pop Up
+    var placeOrderBtn = cartCard.querySelector('#PlaceOrder');
+
+    var placeOrderBtn = cartCard.querySelector('#PlaceOrder');
+    placeOrderBtn.onclick = () => {
+        if (totalOfTotals > wallet) {
+            warningMsg.classList.remove('hidden')
+            cartCard.append(warningMsg);
+            setTimeout(() => {
+                warningMsg.classList.add('hidden')
+            }, 2000)
+            return
+        }
+        confirmPlaceOrder.classList.remove('hidden')
+    }
 
 }
+
 function buy(ProductToBuy) {
     var AddToCartBtn = detailsWindow.querySelector('.AddToCartBtn')
     AddToCartBtn.innerHTML = `Add To Cart`
     var quantityInput = detailsWindow.querySelector('#quantity');
     quantityInput.value = 1;
-    var total = quantityInput.value * ProductToBuy.price;
+    var total = quantityInput.value * (ProductToBuy.price - (ProductToBuy.price * ProductToBuy.discount));
 
     var decreaseBtn = detailsWindow.querySelector('#decrease');
     var increaseBtn = detailsWindow.querySelector('#increase');
-    // var productToBuyStock = detailsWindow.querySelector('.productStock');
     decreaseBtn.onclick = () => {
         quantityInput.value != 1 ? quantityInput.value-- : '';
         if (quantityInput.value < ProductToBuy.stock && increaseBtn.classList.contains('btn-disabled')) {
             increaseBtn.classList.remove('btn-disabled')
         }
-        total = quantityInput.value * ProductToBuy.price;
+        total = quantityInput.value * (ProductToBuy.price - (ProductToBuy.price * ProductToBuy.discount));
         quantityInput.value == 1 ? AddToCartBtn.innerHTML = `Add To Cart` : AddToCartBtn.innerHTML = `Add To Cart $${total}`;
     }
 
     increaseBtn.onclick = () => {
         quantityInput.value < ProductToBuy.stock ? quantityInput.value++ : increaseBtn.classList.add('btn-disabled');
 
-        total = quantityInput.value * ProductToBuy.price;
+        total = quantityInput.value * (ProductToBuy.price - (ProductToBuy.price * ProductToBuy.discount));
         AddToCartBtn.innerHTML = `Add To Cart $${total}`
-        // productToBuyStock.innerHTML = `${ProductToBuy.stock - parseInt(quantityInput.value)} left`;
     }
 
     AddToCartBtn.onclick = () => {
@@ -634,29 +770,6 @@ function buy(ProductToBuy) {
         cartNotification.classList.remove('hidden')
         cartNotification.innerText = cart.length;
         showCart(cart)
-
-        let totalsArray = cart.map(purchasedProduct => {
-            return purchasedProduct.quantity * purchasedProduct.price;
-        });
-        var totalOfTotals = totalsArray.reduce((ToT, el) => {
-            return ToT + el;
-        })
-
-        //  `<p class="overallTotal">${totalOfTotals}</p>`
-        let quantitiesArray = cart.map(purchasedProduct => {
-            return purchasedProduct.quantity;
-        });
-        var bottomLineItems = quantitiesArray.reduce((sum, el) => {
-            return sum + el;
-        })
-        var bottomLine = document.createElement('p');
-        bottomLine.innerHTML = `<div class="table text-right p-2 border border-gray-200 rounded-lg"><div class="table-row"><span class="table-cell">Receipt Date: <b class="text-gray-600 text-xsm">${new Date()}</b></span><span class="table-cell">Overall Items: <b class="text-gray-600">${bottomLineItems}</b></span> <span class="table-cell">Overall Total: <b class="text-gray-600">${totalOfTotals}$</b></span></div></div>`
-        cartCard.append(bottomLine)
-        console.log(quantitiesArray);
-
-        // console.log(totalsArray);
-        console.log(totalOfTotals);
-
     }
 
 }
@@ -724,7 +837,8 @@ function toggleView() {
 
     var productBrandBadge = document.querySelectorAll('span.brand')
     var productCategoryBadge = document.querySelectorAll('span.category')
-
+    var viewDetailsButtons = document.querySelectorAll('.viewDetailsBtn')
+    
     toggleList.onclick = () => {
         toggleGrid.classList.remove('bg-green-600', 'text-white')
         toggleList.classList.add('bg-green-600', 'text-white')
@@ -748,7 +862,7 @@ function toggleView() {
         productCategoryBadge.forEach(badge => {
             badge.classList.remove('hidden')
         })
-        viewDetailsBtn.forEach(btn => {
+        viewDetailsButtons.forEach(btn => {
             btn.classList.remove('w-full')
             btn.classList.add('w-1/2')
         })
@@ -777,7 +891,7 @@ function toggleView() {
         productCategoryBadge.forEach(badge => {
             badge.classList.add('hidden')
         })
-        viewDetailsBtn.forEach(btn => {
+        viewDetailsButtons.forEach(btn => {
             btn.classList.add('w-full')
             btn.classList.remove('w-1/4')
         })
@@ -942,20 +1056,12 @@ cartCard.addEventListener('click', (event) => {
 //     })})
 
 function search(input) {
-    // let prdcts = Object.values(firstProduct).flat();
-    // return searchedProdyct.filter(el => el.name.includes(input)||el.description.includes(input)||el.category.includes(input)||el.brand.includes(input)||el.price.includes(input))
-    // var  return prdcts.filter(el => el.name.includes(input) || el.description.includes(input))
     let prdcts = firstProduct.filter((el) => {
-        // return el.name.toLowerCase().includes(input.toLowerCase())|| el.description.toLowerCase().includes(input.toLowerCase());
         var userInput = input.trim().toLowerCase();
-        // return el.name.toLowerCase().includes(userInput);
         return el.name.toLowerCase().includes(userInput) ||
             el.description.toLowerCase().includes(userInput) ||
             el.category.toLowerCase().includes(userInput) ||
             el.brand.toLowerCase().includes(userInput) || el.price.toString().includes(userInput) || ''
-        // el.price.toLowerCase().includes(input.toLowerCase())
-
-
     })
     if (prdcts.length == 0) {
         productsSection.innerHTML = `<p class="ring ring-gray-500 rounded-lg w-full p-3 text-center">Sorry, Product Not Found <span class="font-bold text-4xl text-red-500">:-( </span></p>`;
@@ -964,9 +1070,6 @@ function search(input) {
         productsSection.innerHTML = '';
         genFn(prdcts, productsSection);
         toggleView()
-        // viewDtls()
-        // console.log(prdcts);
-        // AddToWishList();
     }
 
 
