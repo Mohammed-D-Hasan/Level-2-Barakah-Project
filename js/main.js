@@ -11,10 +11,8 @@ function typingAnimation() {
 }
 typingAnimation()
 
-/*--------------------------------------*/
 //hero slider
 var hero_slider = [
-
     {
         url: 'img/hero_slider/hero (1).png'
     },
@@ -74,7 +72,7 @@ const products = {
                 "img/products/pcs/pc2/pc2 (2).jpg",
                 "img/products/pcs/pc2/pc2 (3).jpg"
             ],
-            discount: 0
+            discount: 0.4
         },
         {
             id: 3, name: "Mini PC NUC", description: "Compact Intel NUC with i7 CPU and 16GB RAM.", price: 680, category: "PC", brand: "Intel", stock: 15, rate: 4.5, images: [
@@ -303,7 +301,7 @@ const products = {
     // Headphones
     headphone: [
         {
-            id: 42, name: "Wireless Headphones", description: "Over-ear Bluetooth headphones with noise cancellation.", price: 150, category: "Headphone", brand: "Sony", stock: 0, rate: 4.1, images: [
+            id: 42, name: "Wireless Headphones", description: "Over-ear Bluetooth headphones with noise cancellation.", price: 150, category: "Headphone", brand: "Sony", stock: 1, rate: 4.1, images: [
                 "img/products/headphones/headphone1/headphone1 (1).jpg",
                 "img/products/headphones/headphone1/headphone1 (2).jpg",
                 "img/products/headphones/headphone1/headphone1 (3).jpg"
@@ -316,50 +314,15 @@ const products = {
                 "img/products/headphones/headphone2/headphone2 (2).jpg",
                 "img/products/headphones/headphone2/headphone2 (3).jpg"
             ],
-            discount: 0
+            discount: 0.6
         },
     ]
 };
-
 
 var productsSection = document.querySelector('#products')
 let firstProduct = Object.values(products).map((el) => {
     return el[0]
 })
-
-firstProduct.push({
-    id: 4, name: "Gaming PC i9", description: "Beast gaming PC with Intel i9, RTX 4070, and water cooling.", price: 2100, category: "PC", brand: "MSI", stock: 5, rate: 4.8, images: [
-        "img/products/pcs/pc4/pc4 (1).jpg",
-        "img/products/pcs/pc4/pc4 (2).jpg",
-        "img/products/pcs/pc4/pc4 (3).jpg"
-    ],
-    discount: 1
-})
-firstProduct.push({
-    id: 28, name: "Budget Keyboard", description: "Affordable wired keyboard for daily use.", price: 20, category: "Keyboard", brand: "HP", stock: 30, rate: 4.1, images: [
-        "img/products/keyboards/keyboard4/keyboard4 (1).jpg",
-        "img/products/keyboards/keyboard4/keyboard4 (2).jpg",
-        "img/products/keyboards/keyboard4/keyboard4 (3).jpg"
-    ],
-    discount: 0
-})
-firstProduct.push({
-    id: 15, name: "UltraWide 34", description: "34-inch ultrawide for multitasking and design work.", price: 550, category: "Monitor", brand: "Samsung", stock: 8, rate: 4.6, images: [
-        "img/products/monitors/monitor3/monitor3 (1).jpg",
-        "img/products/monitors/monitor3/monitor3 (2).jpg",
-        "img/products/monitors/monitor3/monitor3 (3).jpg"
-    ],
-    discount: 0
-})
-firstProduct.push(
-    {
-        id: 9, name: "MacBook Air M2", description: "Apple laptop with M2 chip, 13-inch Retina display.", price: 1300, category: "Laptop", brand: "Apple", stock: 6, rate: 4.9, images: [
-            "img/products/laptops/laptop3/laptop3 (1).jpg",
-            "img/products/laptops/laptop3/laptop3 (2).jpg",
-            "img/products/laptops/laptop3/laptop3 (3).jpg"
-        ],
-        discount: 0.9
-    })
 
 function genFn(arrg, div) {
     arrg.map((el) => {
@@ -380,10 +343,11 @@ function genFn(arrg, div) {
             }
         }
         getRate(el)
+        //data-aos="fade-up" data-aos-duration="1000"
         var pcard = `
-        <div class="card product-card bg-white w-full md:w-[30%] flex-col shadow-md p-3 rounded-lg relative border border-transparent transition-1 hover:border-red-500">
+        <div class="card product-card bg-white w-full md:w-[45%] lg:w-[30%]  flex-col shadow-xl p-3 rounded-lg relative border border-2 border-transparent !transition-all !duration-300 !ease-in-out hover:border-blue-500 hover:-translate-y-2" data-aos="fade-up" data-aos-duration="1000">
             <div class="edit absolute right-4 top-2">
-                <button class="btn"><i class="fas fa-edit text-gray-600"></i></button>
+                <button class="btn editProduct " data-id=${el.id} data-cat=${el.category}><i class="fas fa-edit text-orange-400"></i></button>
                 <button class="btn AddToWishList" data-id=${el.id} data-cat=${el.category}>${wishlist.some(item => item.id === el.id)
                 ? '<i class="fas fa-heart text-red-500"></i>'
                 : '<i class="far fa-heart text-red-500"></i>'
@@ -391,7 +355,7 @@ function genFn(arrg, div) {
             }</button>
             </div>
             <div class="productImage w-full flex justify-center items-center  h-full p-4">
-                <img id="pImg" data-imgOne="${el.images[0]}" data-imgTwo="${el.images[1]}" data-imgThree="${el.images[2]}" src="${el.images[0]}" alt="${el.name}" class="img w-full h-50 object-contain">
+                <img id="pImg" data-imgOne="${el.images[0]}" data-imgTwo="${el.images[1]}" data-imgThree="${el.images[2]}" src="${el.images[0]}" alt="${el.name}" class=" w-full h-50 object-contain">
             </div>
             <div class="details  flex flex-col gap-5 mb-6">
                 <h1 id="pName" class="text-xl font-bold truncate" title="${el.name}">${el.name}</h1>
@@ -407,11 +371,11 @@ function genFn(arrg, div) {
                     <span id="pStock" class="badge border stock border-gray-400 w-fit px-2 rounded-lg " data-stock='${el.stock}'>${el.stock} left</span>
                 </p>
                 <p class="flex items-center gap-3">
-                    ${el.discount != 0 ? `<span id="pPrice" class="text-3xl text-purple-500 font-bold">$${el.price - (el.price * el.discount)}</span><span class="oldPrice line-through text-xl text-gray-400">$${el.price}</span><span class="text-xl absolute top-0 left-0 bg-orange-600 p-2 rounded-tl-lg text-white opacity-80">${el.discount * 100}% Off</span>` : `<span id="pPrice" class="text-3xl text-purple-500 font-bold">$${el.price}</span>`}                
+                    ${el.discount != 0 ? `<span id="pPrice" class="text-3xl text-blue-500 font-bold">$${el.price - (el.price * el.discount)}</span><span class="oldPrice line-through text-xl text-gray-400">$${el.price}</span><span class="text-xl absolute top-0 left-0 bg-blue-500 p-2 rounded-tl-lg text-white opacity-80">${el.discount * 100}% Off</span>` : `<span id="pPrice" class="text-3xl text-blue-500 font-bold">$${el.price}</span>`}                
                 </p>
                             <div class="viewDetails">
                 <button id="viewDetailsBtn"
-                    class="viewDetailsBtn btn btn-primary w-full ${el.stock == 0 ? 'btn-disabled' : ''}" data-id=${el.id} data-category=${el.category}>View Details</button>
+                    class="viewDetailsBtn btn text-white bg-blue-500 w-full ${el.stock == 0 ? 'btn-disabled' : ''}" data-id=${el.id} data-category=${el.category}>View Details</button>
             </div>
                 </div>
 
@@ -425,18 +389,16 @@ function genFn(arrg, div) {
 
 }
 
-
-
 var detailsWindow = document.createElement('div');
 detailsWindow.className = 'dtlsWindow flex justify-center items-center fixed z-50 inset-0 bg-black/70 hidden'
 
-
+// data-aos="fade-up" data-aos-duration="1000"
 detailsWindow.innerHTML = `
 <div
-            class="dtlsWindowCard overflow-y-scroll overscroll-contain relative bg-white  w-[95%]  h-[75%] py-4 z-50 shadow-md p-3 lg:p-3 rounded-lg flex flex-col lg:flex-row  justify-around items-center gap-4 ">
+            class="dtlsWindowCard overflow-y-scroll overscroll-contain relative bg-white  w-[90%] md:w-[75%]  h-[75%] py-4 z-50 shadow-md p-3 lg:p-3 rounded-lg flex flex-col lg:flex-row  justify-around items-center gap-4 ">
                         <button id="closeWindow" class="closeWindow btn absolute top-2 right-2 bg-red-500 text-white text-lg h-8 w-8 hover:bg-red-700">X</button>
 
-            <div class="productImage flex flex-col gap-2 h-[70%] justify-center items-center w-[100%] lg:w-[50%] lg:h-[100%] p-2 lg:p-4">
+            <div class="productImage flex flex-col gap-2 h-[50%] justify-center items-center w-[100%] lg:w-[50%] lg:h-[100%] p-2 lg:p-4">
                 <img src="" alt="" class="img mainproductimage w-full h-[75%] lg:h-[70%] object-contain">
                 <div class="productImages  border-gray-300 flex  w-[80%] gap-3 !h-[30%] lg:h-[30%] rounded-lg ">  
                     <img src="" alt="" class="thumbnail img p-1 md:p-2 border border-gray-400 rounded-lg  w-[32%] h-[100%] object-contain">
@@ -465,8 +427,8 @@ detailsWindow.innerHTML = `
                 <p class="flex justify-between gap-2 w-[30%]">
                     Quantity: <button id="decrease" class="btn w-7 h-full text-lg bg-red-500 text-white">-</button> <input id="quantity" class="input w-20 text-center h-full text-lg" type="number" readonly value="" min="1" max="" ><button id="increase" class="btn w-7 h-full text-lg text-white bg-green-500" >+</button>
                 </p>
-                <div class="AddToCart w-full lg:w-1/4">
-                    <button class="AddToCartBtn btn btn-primary w-full ">Add to
+                <div class="AddToCart w-full lg:w-1/2">
+                    <button class="AddToCartBtn btn text-white bg-blue-500 w-full ">Add to
                         cart </button>
                 </div>
             </div>
@@ -477,23 +439,24 @@ detailsWindow.addEventListener('click', () => {
     detailsWindow.classList.add('hidden')
     document.body.classList.remove('overflow-hidden')
     detailsWindow.querySelector('#quantity').value = 1;
-
+    var increaseBtn = detailsWindow.querySelector('#increase');
+    increaseBtn.classList.contains('btn-disabled') ? increaseBtn.classList.remove('btn-disabled') : '';
 })
 
 //Search for an element
 function searchById(productCategory, productID) {
     return products[productCategory].find(product => product.id == productID);
 }
+
 //Append Details Window to body
 document.body.appendChild(detailsWindow);
 
 //Fill details window with product data
-
 function viewDtls() {
     var viewDetailsBtn = document.querySelectorAll('.viewDetailsBtn');
     viewDetailsBtn.forEach((btn) => {
         btn.addEventListener('click', () => {
-            //Search for the matching product
+            //Search for the matching product 
             let productID = parseInt(btn.getAttribute('data-id'));
             let productCategory = (btn.getAttribute('data-category')).toLowerCase();
             const foundProduct = searchById(productCategory, productID);
@@ -512,7 +475,7 @@ function viewDtls() {
             detailsWindow.querySelector('.productDisc').textContent = foundProduct.description;
             // detailsWindow.querySelector('.productPrice').textContent = `$${foundProduct.price}`;
             detailsWindow.querySelector('.productPrice').innerHTML = `
-                ${foundProduct.discount != 0 ? `<span id="pPrice" class="text-3xl text-purple-500 font-bold">$${foundProduct.price - (foundProduct.price * foundProduct.discount)}</span><span class="oldPrice line-through text-xl text-gray-400">$${foundProduct.price}</span><span class="text-sm p-1 bg-orange-600 rounded-tl-lg rounded-br-lg text-white opacity-80">${foundProduct.discount * 100}% Off</span>` : `<span id="pPrice" class="text-3xl text-purple-500 font-bold">$${foundProduct.price}</span>`}
+                ${foundProduct.discount != 0 ? `<span id="pPrice" class="text-3xl text-blue-500 font-bold">$${foundProduct.price - (foundProduct.price * foundProduct.discount)}</span><span class="oldPrice line-through text-xl text-gray-400">$${foundProduct.price}</span><span class="text-sm p-1 bg-blue-600 rounded-tl-lg rounded-br-lg text-white opacity-80">${foundProduct.discount * 100}% Off</span>` : `<span id="pPrice" class="text-3xl text-blue-500 font-bold">$${foundProduct.price}</span>`}
             `;
             let card = btn.closest('.product-card');
             var rateStars = card.querySelector('span.stars');
@@ -526,14 +489,12 @@ function viewDtls() {
             AddToCartBtn.innerHTML = `Add to Cart`
             AddToCartBtn.setAttribute('data-id', foundProduct.id);
             AddToCartBtn.setAttribute('data-category', foundProduct.category)
-
-
             buy(foundProduct)
             showCart(cart)
         })
     })
 }
-// viewDtls()
+
 let cart = [];
 let purchasedItems = [];
 let wallet = 5000
@@ -548,10 +509,10 @@ function showCart(cartArr) {
     cartArr.forEach((item, index) => {
         cartCard.innerHTML +=
             `
-            <div class="cartItem relative p-2 border border-gray-200 flex flex-col lg:flex-row gap-2 lg:gap-0 rounded-lg h-[30%] lg:h-[40%]">
+            <div class="cartItem relative p-2 border border-gray-200 flex flex-col lg:flex-row gap-2 lg:gap-0 rounded-lg h-[90%] lg:h-[40%]">
                 <button class="btn removeFromCart  hover:bg-red-500 text-red-500 font-bold hover:text-white border-2 border-red-500 absolute top-1 right-1 w-5 h-5 p-3  z-10" title="Reomve Product From Cart"><i class="fas fa-trash-alt"></i></button>
-                <div class="cartItemImg w-full p-2 lg:w-[35%] flex justify-center h-[50%] lg:h-[100%]">
-                    <img src="${item.images[0]}" alt="${item.name}" class="img p-1 w-[90%] h-[75%%] object-contain">
+                <div class="cartItemImg w-full p-2 lg:w-[35%] flex justify-center h-[60%] lg:h-[100%]">
+                    <img src="${item.images[0]}" alt="${item.name}" class="img p-1 w-[90%] h-[60%] object-contain">
                 </div>
                 <div class="cartItemInfo table w-full lg:w-[65%] lg:h-full flex flex-col h-fit">
                     <div class="table-row !border-b-1 border-gray-500"><h1 class="table-cell font-bold text-sm">${item.name}</h1></div>
@@ -568,9 +529,6 @@ function showCart(cartArr) {
         minusBtn.onclick = () => {
             var index = parseInt(minusBtn.getAttribute('data-index'));
             cart[index].quantity != 1 ? cart[index].quantity-- : ''
-            // if (cart[index].quantity < cart[index].stock && pl .classList.contains('btn-disabled')) {
-            //     increaseBtn.classList.remove('btn-disabled')
-            // }
             showCart(cart);
         }
     })
@@ -582,7 +540,6 @@ function showCart(cartArr) {
             showCart(cart);
         }
     })
-    //tot
 
     let totalsArray = cart.map(purchasedProduct => {
         return purchasedProduct.quantity * (purchasedProduct.price - (purchasedProduct.price * purchasedProduct.discount));
@@ -598,13 +555,13 @@ function showCart(cartArr) {
         return sum + el;
     })
 
-    var bottomLine = document.createElement('p');
+    var bottomLine = document.createElement('div');
     bottomLine.innerHTML = `
-    <div class="table text-right p-2 border border-gray-200 rounded-lg">
-        <div class="table-row">
-            <span class="table-cell text-right text-xl"><i class="fas fa-receipt"></i></span>
-            <span class="table-cell text-right">Overall Items: <b class="text-gray-600">${bottomLineItems}</b></span>
-            <span class="table-cell text-right">Overall Total: <b class="text-gray-600">${totalOfTotals}$</b></span>
+    <div class="text-right p-2 border border-gray-200 rounded-lg">
+        <div class="flex flex-col">
+            <span class=" text-center text-xl"><i class="fas fa-receipt"></i></span>
+            <span class=" text-center">Overall Items: <b class="text-gray-600">${bottomLineItems}</b></span>
+            <span class=" text-center">Overall Total: <b class="text-gray-600">${totalOfTotals}$</b></span>
         </div>
     </div>`
     cartCard.append(bottomLine)
@@ -625,7 +582,7 @@ function showCart(cartArr) {
     cartCard.append(placeOrder)
     //Clear Cart Pop Up 
     var confirmClearCart = document.createElement('div');
-    confirmClearCart.className = ('confirmClearCart bg-gray-100 shadow-lg border border-blue-500 w-fit rounded-lg p-2 absolute left-1/2 top-1/2 -translate-1/2 hidden');
+    confirmClearCart.className = ('confirmClearCart bg-gray-100 shadow-lg border border-blue-500 w-fit rounded-lg p-5 absolute left-1/2 top-1/2 -translate-1/2 hidden');
     confirmClearCart.innerHTML = `
         <p class="capitalize">
         Are you sure you want to clear your cart?
@@ -658,14 +615,20 @@ function showCart(cartArr) {
     var warningMsg = document.createElement('div');
     warningMsg.className = 'bg-red-500 opacity-90 p-3 text-white'
     warningMsg.innerHTML = `
-        <p>Sorry, Your Balance Isn't Enough</p>
+        <p>Sorry, Your Balance Isn't Enough. Current Balance: ${wallet}</p>
     `
     //Confirm Place Order Pop Up
     var confirmPlaceOrder = document.createElement('div');
-    confirmPlaceOrder.className = ('confirmPlaceOrder bg-gray-100 shadow-lg border border-blue-500 w-fit rounded-lg p-2 absolute left-1/2 top-1/2 -translate-1/2 hidden');
+    confirmPlaceOrder.className = ('confirmPlaceOrder bg-gray-100 shadow-lg border border-blue-500 w-[75%] md:w-fit rounded-lg flex flex-col gap-3  p-5 absolute left-1/2 top-1/2 -translate-1/2 hidden');
     confirmPlaceOrder.innerHTML = `
         <p class="capital">
-        Are you sure you want to place the order?
+            Are you sure you want to place the order?
+        </p>
+        <p class="text-sm text-gray-500">
+            <b>${totalOfTotals}$</b> Will Be Deducted From Your Wallet.
+        </p>
+        <p class="text-sm text-gray-500">
+            Current Balnce in your wallet <b>${wallet}$</b>.
         </p>
         <div class="w-full flex justify-center gap-2 p-2">
             <button class="btn bg-green-500 text-white rounded-lg" id="YesPlaceOrder">Yes</button>
@@ -689,27 +652,28 @@ function showCart(cartArr) {
     var yesPlaceOrder = cartCard.querySelector('#YesPlaceOrder');
     yesPlaceOrder.onclick = () => {
         confirmPlaceOrder.classList.add('hidden');
-        purchasedItems = cart;
+
+        var copyCart = cart.map(i => ({ ...i }));
+        purchasedItems = purchasedItems.concat(copyCart);
+
+
         cart = [];
-        // console.log(purchasedItems);
-        // console.log(cart);
         showCart(cart)
+        showPurchaseLogfn()
+        wallet = wallet - totalOfTotals;
         cartCard.append(successMsg)
         setTimeout(() => {
             successMsg.classList.add('hidden')
         }, 2000);
-        purchasedItems.forEach((item) => {
+        //Update the stock for the original product in the big DB
+        copyCart.forEach((item) => {
             var boughtItem = products[item.category.toLowerCase()].find(p => p.id == item.id);
             boughtItem.stock = boughtItem.stock - item.quantity;
-            // console.log(boughtItem);
-            // console.log(products);
-            // console.log(firstProduct);
-            
         })
+        refreshProductCards()
     }
     //Show Place Order Pop Up
     var placeOrderBtn = cartCard.querySelector('#PlaceOrder');
-
     var placeOrderBtn = cartCard.querySelector('#PlaceOrder');
     placeOrderBtn.onclick = () => {
         if (totalOfTotals > wallet) {
@@ -722,7 +686,6 @@ function showCart(cartArr) {
         }
         confirmPlaceOrder.classList.remove('hidden')
     }
-
 }
 
 function buy(ProductToBuy) {
@@ -751,31 +714,37 @@ function buy(ProductToBuy) {
     }
 
     AddToCartBtn.onclick = () => {
-        // parseInt(quantityInput.value++);
         var cartNotification = document.getElementById('cartNotification');
         var eleIndex = cart.findIndex(product => product.id == ProductToBuy.id);
+        // var newQuantity = parseInt(quantityInput.value);
+        // var newQuantity = 0
 
-        var addedQuantity = parseInt(quantityInput.value);
         if (eleIndex === -1) {
-            addedQuantity > ProductToBuy.stock ? addedQuantity = ProductToBuy.stock : '';
-            ProductToBuy.quantity = addedQuantity;
-            cart.push(ProductToBuy);
+            // newQuantity > ProductToBuy.stock ? newQuantity = ProductToBuy.stock : '';
+            parseInt(quantityInput.value) > ProductToBuy.stock ? parseInt(quantityInput.value) = ProductToBuy.stock : '';
+
+            var clonedProduct = { ...ProductToBuy }
+            clonedProduct.quantity = parseInt(quantityInput.value);
+            cart.push(clonedProduct);
+
+            detailsWindow.classList.add('hidden')
+            document.body.classList.remove('overflow-hidden')
         }
         else {
-            var overallQuantity = cart[eleIndex].quantity + addedQuantity;
+
+            var overallQuantity = cart[eleIndex].quantity + parseInt(quantityInput.value);
             overallQuantity > ProductToBuy.stock ? overallQuantity = ProductToBuy.stock : '';
             cart[eleIndex].quantity = overallQuantity;
-        }
 
+            detailsWindow.classList.add('hidden')
+            document.body.classList.remove('overflow-hidden')
+        }
         cartNotification.classList.remove('hidden')
         cartNotification.innerText = cart.length;
         showCart(cart)
+        showPurchaseLogfn()
     }
-
 }
-
-
-
 // Don't Close Window When Card Itself Is Clicked
 detailsWindow.querySelector('div.dtlsWindowCard').addEventListener('click', (e) => {
     e.stopPropagation();
@@ -785,12 +754,9 @@ detailsWindow.querySelector('#closeWindow').addEventListener('click', () => {
     detailsWindow.classList.add('hidden')
     document.body.classList.remove('overflow-hidden')
     detailsWindow.querySelector('#quantity').value = 1;
+    var increaseBtn = detailsWindow.querySelector('#increase');
+    increaseBtn.classList.contains('btn-disabled') ? increaseBtn.classList.remove('btn-disabled') : '';
 })
-
-
-
-
-
 /*Select Product Image*/
 function selectImg() {
     var productImageMain = detailsWindow.querySelector('.mainproductimage');
@@ -802,48 +768,31 @@ function selectImg() {
                 img.classList.remove('ring-2', 'ring-blue-500')
 
             })
-            // el.classList.add('!border-blue-500', 'border-2')
             el.classList.add('ring-2', 'ring-blue-500')
             productImageMain.setAttribute('src', el.src)
-
-
         })
-
     })
-
-
 }
 
 selectImg();
 
 /*Toggle list or grid*/
 function toggleView() {
-
-
     var displayStyle = document.getElementById('displayStyle');
     var toggleGrid = displayStyle.querySelector('#toggleGrid');
     var toggleList = displayStyle.querySelector('#toggleList');
-    if (window.innerWidth <= 768) {
-        toggleGrid.classList.add('hidden')
-        toggleList.classList.add('hidden')
-    }
-    else {
-        toggleGrid.classList.remove('hidden')
-        toggleList.classList.remove('hidden')
-    }
+
     var productCard = document.querySelectorAll('.product-card')
     var productCardImage = document.querySelectorAll('.productImage')
     var productCardDetails = document.querySelectorAll('.details')
-
     var productBrandBadge = document.querySelectorAll('span.brand')
     var productCategoryBadge = document.querySelectorAll('span.category')
     var viewDetailsButtons = document.querySelectorAll('.viewDetailsBtn')
-    
+
     toggleList.onclick = () => {
         toggleGrid.classList.remove('bg-green-600', 'text-white')
         toggleList.classList.add('bg-green-600', 'text-white')
         productsSection.classList.remove('md:flex-row')
-
         productCard.forEach(card => {
             card.classList.remove('md:w-[30%]', 'flex-col')
             card.classList.add('md:flex-row', '!w-[90%]')
@@ -867,7 +816,6 @@ function toggleView() {
             btn.classList.add('w-1/2')
         })
     }
-
     toggleGrid.onclick = () => {
         toggleList.classList.remove('bg-green-600', 'text-white')
         toggleGrid.classList.add('bg-green-600', 'text-white')
@@ -904,7 +852,7 @@ var wishListWindow = document.createElement('div');
 wishListWindow.className = 'fixed inset-0 bg-black/70 flex justify-center items-center hidden';
 document.body.appendChild(wishListWindow);
 wishListWindow.innerHTML = `
-<div class="wishlistCard bg-white flex flex-col gap-2 w-[75%] lg:w-1/2 h-[80%] lg:h-1/2 overflow-y-scroll p-4 rounded-lg">
+<div class="wishlistCard bg-white flex flex-col gap-2 w-[90%] md:w-1/2 h-[80%] md:h-1/2 overflow-y-scroll p-4 rounded-lg">
 </div>
 `
 
@@ -936,12 +884,12 @@ function showWishList() {
     }
     wishlist.forEach((ele) => {
         wishlistCard.innerHTML += `
-             <div class="wishListItem relative p-2 border border-gray-200 flex flex-col lg:flex-row gap-2 lg:gap-0 rounded-lg h-[30%] lg:h-[50%]">
+             <div class="wishListItem flex-col relative p-2 border border-gray-200 flex md:items-center md:flex-row gap-2 lg:gap-0 rounded-lg h-[40%] p-2 md:h-[50%] !scollbar-color:gold">
                  <button class="btn removeFromWishList  hover:bg-red-500 text-red-500 font-bold hover:text-white border-2 border-red-500 absolute top-1 right-1 w-fit h-fit p-1" title="Reomve Product From Wish List"><i class="fas fa-trash-alt"></i></button>
-                 <div class="wishItemImg w-full p-2 lg:w-[25%] flex justify-center h-[60%] lg:h-[100%]">
-                     <img src="${ele.images[0]}" alt="${ele.name}" class="img p-1 w-[90%] h-[100%] object-contain">
+                 <div class="wishItemImg w-full p-1 md:w-[35%] flex justify-center h-[50%] md:h-[100%]">
+                     <img src="${ele.images[0]}" alt="${ele.name}" class="img  w-[100%] h-[full] md:h-[100%] object-contain">
                  </div>
-                 <div class="wishItemInfo w-full lg:w-[75%] lg:h-full h-fit flex flex-col justify-center">
+                 <div class="wishItemInfo  w-[100%] lg:h-full !h-fit flex flex-col justify-center">
                      <h1 class="font-bold ">${ele.name}</h1>
                     <p class="flex flex-col  gap-3">
                         <span class="badge productBrand border border-gray-400 px-1 !text-sm rounded-lg w-fit">Brand: ${ele.brand}</span>
@@ -979,7 +927,6 @@ function showWishList() {
 //Add to Wishlist
 function AddToWishList() {
     var addToWishListBtns = document.querySelectorAll('.AddToWishList');
-    // var notification = document.getElementById('wishListNotification');
     addToWishListBtns.forEach((btn) => {
         btn.onclick = () => {
             var itemID = parseInt(btn.getAttribute('data-id'));
@@ -997,7 +944,6 @@ function AddToWishList() {
             }
             showWishList()
         }
-
     })
 }
 AddToWishList()
@@ -1007,7 +953,7 @@ AddToWishList()
 var cartWindow = document.createElement('div');
 cartWindow.className = 'fixed inset-0 bg-black/70 flex justify-center items-center hidden';
 document.body.appendChild(cartWindow);
-cartWindow.innerHTML = `<div class="cartCard bg-white flex flex-col gap-2 w-[75%] lg:w-1/2 h-[80%]  overflow-y-scroll p-4 rounded-lg"></div>`
+cartWindow.innerHTML = `<div class="cartCard bg-white flex flex-col gap-2 w-[90%] md:w-1/2 h-[80%]  overflow-y-scroll p-4 rounded-lg"></div>`
 //Show Cart Window showCart
 var showCartBtn = document.getElementById('showCart');
 showCartBtn.onclick = () => {
@@ -1029,21 +975,6 @@ cartCard.innerHTML = `
 cartCard.addEventListener('click', (event) => {
     event.stopPropagation();
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // var themeToggle = document.getElementById('toggleDarkOrLight');
 // console.log(themeToggle);
@@ -1069,7 +1000,8 @@ function search(input) {
     else {
         productsSection.innerHTML = '';
         genFn(prdcts, productsSection);
-        toggleView()
+        toggleView();
+        editProducts()
     }
 
 
@@ -1079,7 +1011,671 @@ var searchBar = document.getElementById('searchbar');
 searchBar.addEventListener('input', () => {
     var searchTxt = searchBar.value || '';
     search(searchTxt)
-
-
 })
+
 genFn(firstProduct, productsSection);
+
+function refreshProductCards() {
+    productsSection.innerHTML = '';
+    categoriesSection.innerHTML = ''
+    genFn(firstProduct, productsSection);
+    catFn()
+    toggleView();
+    editProducts()
+}
+//Purchase Log Window
+
+// showPurchaseLog()
+var purchaseLogWindow = document.createElement('div');
+purchaseLogWindow.className = ('absolute fixed inset bg-black/70 hidden')
+document.body.append(purchaseLogWindow);
+purchaseLogWindow.innerHTML = `
+        <div class="purchasedCard w-half h-half bg-white flex flex-col jsutify-center overflow-scroll">
+
+        </div>
+    `
+
+
+
+
+
+// Edit a Product
+
+
+var editBtns = productsSection.querySelectorAll('.editProduct');
+
+var editWindow = document.createElement('div')
+editWindow.className = ('editWindow fixed inset-0 bg-black/70 z-50 flex items-center justify-center hidden')
+document.body.append(editWindow)
+editWindow.innerHTML = `
+<div id="editWindowCard" class="editWindowCard overflow-y-scroll overscroll-contain relative bg-white w-[90%] h-[70%]  lg:w-[60%] lg:h-[60%] py-4 z-50 shadow-md p-3 lg:p-3 rounded-lg flex flex-col gap-4">
+  
+ <form class="flex flex-col p-4 gap-4 overflow-y-scroll overscoll-contain">
+ <div class="w-full flex">
+    <button id="closeEditWindow" class="closeWindow ml-auto btn bg-red-500 text-white text-lg h-8 w-8 hover:bg-red-700">X</button>
+ </div>
+ <div class="text-center font-bold text-Dark">Edit Product</div>
+  <div class="inpuDiv flex flex-col gap-4">
+    <div class="flex md:items-center flex-col md:flex-row gap-4">
+        <label for="EWId" class="w-32 text-blue-600 text-left font-bold">ID:</label>
+        <input data-required="required" id="EWId" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" type="number" placeholder="ID">
+    </div>
+ </div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="EWimage1" class="w-32 text-blue-600 text-left font-bold">Image 1:</label>
+    <input data-required="required" id="EWimage1" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" type="text" placeholder="Image-1 URL: Ex- C/images/image.jpg">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="EWimage2" class="w-32 text-blue-600 text-left font-bold">Image 2:</label>
+    <input data-required="required" id="EWimage2" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" type="text" placeholder="Image-2 URL: Ex- C/images/image.jpg">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="EWimage3" class="w-32 text-blue-600 text-left font-bold">Image 3:</label>
+    <input data-required="required" id="EWimage3" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" type="text" placeholder="Image-3 URL: Ex- C/images/image.jpg">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="EWproductName" class="w-32 text-blue-600 text-left font-bold">Name:</label>
+    <input data-required="required" id="EWproductName" type="text" class="input focus:outline-none focus:border-blue-400 productName p-2 border rounded flex-grow" placeholder="Product Name">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex items-start flex-col md:flex-row gap-4">
+    <label for="EWproductDiscreption" class="w-32 text-blue-600 text-left font-bold pt-2">Discreption:</label>
+    <textarea data-required="required" id="EWproductDiscreption" class="input focus:outline-none focus:border-blue-400 textarea p-2 border rounded flex-grow resize-y" placeholder="Product Discreption"></textarea>
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="EWproductPrice" class="w-32 text-blue-600 text-left font-bold">Price:</label>
+    <input data-required="required" id="EWproductPrice" type="number" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" placeholder="Price">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="EWproductRate" class="w-32 text-blue-600 text-left font-bold">Rate:</label>
+    <input data-required="required" id="EWproductRate" type="number" class="input number focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" min="1" max="5" step="0.1" placeholder="Rate 0 -> 5">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="EWproductBrand" class="w-32 text-blue-600 text-left font-bold">Brand:</label>
+    <input data-required="required" id="EWproductBrand" type="text" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" placeholder="Brand">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="EWproductCat" class="w-32 text-blue-600 text-left font-bold">Category:</label>
+    <input data-required="required" id="EWproductCat" type="text" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" placeholder="Category e.g Laptop, PC etc...">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="EWproductStock" class="w-32 text-blue-600 text-left font-bold">Stock:</label>
+    <input data-required="required" id="EWproductStock" type="number" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" placeholder="Stock">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="EWproductDiscount" class="w-32 text-blue-600 text-left font-bold">Discount:</label>
+    <input data-required="required" id="EWproductDiscount" type="number" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" placeholder="Discount 0 -> 1, (ex:0.3 = 30%)">
+  </div>
+</div>
+
+  <div class="flex justify-end">
+    <button class="btn w-1/4 bg-green-500 text-white" type="submit" id="EWok">OK</button>
+  </div>
+</div>
+</form>
+
+</div>
+`
+
+assignNamesToInputs(editWindow)
+var closeEditWindowBtn = editWindow.querySelector('#closeEditWindow');
+closeEditWindowBtn.onclick = () => {
+    editWindow.classList.add('hidden')
+    document.body.classList.remove('overflow-hidden');
+}
+editWindow.onclick = () => {
+    editWindow.classList.add('hidden')
+    document.body.classList.remove('overflow-hidden');
+}
+var editWindowCard = editWindow.querySelector('#editWindowCard');
+editWindowCard.addEventListener('click', (e) => {
+    e.stopPropagation();
+})
+function editProducts() {
+    var editBtns = document.querySelectorAll('.editProduct');
+    editBtns.forEach(((btn) => {
+        btn.onclick = () => {
+            var errors = editWindow.querySelectorAll('.errorMsg');
+            if (errors) {
+                errors.forEach(error => { error.classList.add('hidden') });
+            }
+            var inps = editWindow.querySelectorAll('input');
+            inps.forEach(inp => {
+                //('border', 'border-2', 'border-red-500')
+
+                if (inp.classList.contains('border-red-500') || inp.classList.contains('border-2')) {
+                    inp.classList.remove('border-red-500')
+                    inp.classList.remove('border-2')
+                }
+            })
+            editWindow.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            var ProCat = btn.getAttribute('data-cat').toLowerCase();
+            var ProId = parseInt(btn.getAttribute('data-id'))
+            var product = searchById(ProCat, ProId);
+            fillEditWindow(product);
+            saveEdits(ProCat, ProId);
+        }
+    }))
+}
+function fillEditWindow(product) {
+    editWindow.querySelector('#EWId').value = product.id;
+    editWindow.querySelector('#EWimage1').value = product.images[0];
+    editWindow.querySelector('#EWimage2').value = product.images[1];
+    editWindow.querySelector('#EWimage3').value = product.images[2];
+    editWindow.querySelector('#EWproductName').value = product.name;
+    editWindow.querySelector('#EWproductDiscreption').value = product.description;
+    editWindow.querySelector('#EWproductPrice').value = product.price
+    editWindow.querySelector('#EWproductRate').value = product.rate;
+    editWindow.querySelector('#EWproductBrand').value = product.brand;
+    editWindow.querySelector('#EWproductCat').value = product.category;
+    editWindow.querySelector('#EWproductStock').value = product.stock;
+    editWindow.querySelector('#EWproductDiscount').value = product.discount;
+}
+function saveEdits(Cat, Id) {
+    var okBtn = editWindow.querySelector('#EWok');
+    var item = products[Cat].find(p => p.id == Id);
+    okBtn.onclick = (e) => {
+        console.log('hello from ok edit btn');
+
+        e.preventDefault();
+        if (!validate(editWindow)) {
+            return
+        }
+        item.images[0] = editWindow.querySelector('#EWimage1').value;
+        item.images[1] = editWindow.querySelector('#EWimage2').value;
+        item.images[2] = editWindow.querySelector('#EWimage3').value;
+        item.name = editWindow.querySelector('#EWproductName').value;
+        item.description = editWindow.querySelector('#EWproductDiscreption').value;
+        item.price = parseInt(editWindow.querySelector('#EWproductPrice').value);
+        item.rate = editWindow.querySelector('#EWproductRate').value;
+        item.brand = editWindow.querySelector('#EWproductBrand').value;
+        item.category = editWindow.querySelector('#EWproductCat').value;
+        item.stock = parseInt(editWindow.querySelector('#EWproductStock').value);
+        item.discount = editWindow.querySelector('#EWproductDiscount').value;
+        console.log(item);
+        refreshProductCards()
+        editWindow.classList.add('hidden')
+        document.body.classList.remove('overflow-hidden')
+        // catFn()
+    }
+}
+
+editProducts(productsSection)
+//Attach Red Asterisk
+function AttachRedAstersik(window) {
+    var inputDivs = window.querySelectorAll('.inpuDiv');
+    inputDivs.forEach(div => {
+        var fieldDiv = div.querySelector('div:first-child');
+        fieldDiv.classList.add('relative')
+        var Asterisk = document.createElement('i');
+        Asterisk.className = 'text-red-500 text-xl font-bold absolute right-1 top-1/2 md:top-0 z-100'
+        Asterisk.innerHTML = '*'
+        fieldDiv.append(Asterisk)
+    });
+}
+AttachRedAstersik(editWindow)
+
+
+
+
+// Add Product
+
+
+
+// assignNamesToInputs(editWindow)
+// assignNamesToInputs(addWindow)
+// <button class="btn w-1/4 bg-green-500 text-white" id="ok">OK</button>
+var addWindow = document.createElement('div')
+addWindow.className = ('addWindow fixed inset-0 bg-black/70 z-50 flex items-center justify-center hidden')
+document.body.append(addWindow)
+addWindow.innerHTML = `
+<div id="addWindowCard" class="addWindowCard overflow-y-scroll overscroll-contain relative card p-3 bg-white w-[90%] h-[70%]  lg:w-[60%] lg:h-[60%] py-4 z-50 shadow-md p-3 lg:p-3 rounded-lg flex flex-col gap-4">
+  
+<form class="flex flex-col p-4 gap-4 overflow-y-scroll overscoll-contain">
+ <div class="w-full flex">
+    <button id="closeAddWindow" class="closeWindow ml-auto btn bg-red-500 text-white text-lg h-8 w-8 hover:bg-red-700">X</button>
+ </div>
+ <div class="text-center font-bold text-Dark">Add a Product</div>
+  <div class="inpuDiv flex flex-col gap-4">
+    <div class="flex md:items-center flex-col md:flex-row gap-4">
+        <label for="proId" class="w-32 text-blue-600 text-left font-bold">ID:</label>
+        <input data-required="required" id="proId" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" type="number" placeholder="ID">
+    </div>
+ </div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="AWimage1" class="w-32 text-blue-600 text-left font-bold">Image 1:</label>
+    <input data-required="required" id="AWimage1" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" type="text" placeholder="Image-1 URL: Ex- C/images/image.jpg">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="AWimage2" class="w-32 text-blue-600 text-left font-bold">Image 2:</label>
+    <input data-required="required" id="AWimage2" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" type="text" placeholder="Image-2 URL: Ex- C/images/image.jpg">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="AWimage3" class="w-32 text-blue-600 text-left font-bold">Image 3:</label>
+    <input data-required="required" id="AWimage3" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" type="text" placeholder="Image-3 URL: Ex- C/images/image.jpg">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="AWproductName" class="w-32 text-blue-600 text-left font-bold">Name:</label>
+    <input data-required="required" id="AWproductName" type="text" class="input focus:outline-none focus:border-blue-400 productName p-2 border rounded flex-grow" placeholder="Product Name">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex items-start flex-col md:flex-row gap-4">
+    <label for="AWproductDiscreption" class="w-32 text-blue-600 text-left font-bold pt-2">Discreption:</label>
+    <textarea data-required="required" id="AWproductDiscreption" class="input focus:outline-none focus:border-blue-400 textarea p-2 border rounded flex-grow resize-y" placeholder="Product Discreption"></textarea>
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="AWproductPrice" class="w-32 text-blue-600 text-left font-bold">Price:</label>
+    <input data-required="required" id="AWproductPrice" type="number" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" placeholder="Price">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="AWproductRate" class="w-32 text-blue-600 text-left font-bold">Rate:</label>
+    <input data-required="required" id="AWproductRate" type="number" class="input number focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" min="1" max="5" step="0.1" placeholder="Rate 0 -> 5">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="AWproductBrand" class="w-32 text-blue-600 text-left font-bold">Brand:</label>
+    <input data-required="required" id="AWproductBrand" type="text" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" placeholder="Brand">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="AWproductCat" class="w-32 text-blue-600 text-left font-bold">Category:</label>
+    <input data-required="required" id="AWproductCat" type="text" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" placeholder="Category e.g Laptop, PC etc...">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="AWproductStock" class="w-32 text-blue-600 text-left font-bold">Stock:</label>
+    <input data-required="required" id="AWproductStock" type="number" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" placeholder="Stock">
+  </div>
+</div>
+
+<div class="inpuDiv flex flex-col gap-4">
+  <div class="flex md:items-center flex-col md:flex-row gap-4">
+    <label for="AWproductDiscount" class="w-32 text-blue-600 text-left font-bold">Discount:</label>
+    <input data-required="required" id="AWproductDiscount" type="number" class="input focus:outline-none focus:border-blue-400 p-2 border rounded flex-grow" placeholder="Discount 0 -> 1, (ex:0.3 = 30%)">
+  </div>
+</div>
+
+  <div class="flex justify-end">
+    <button class="btn w-1/4 bg-green-500 text-white" type="submit" id="AWok">OK</button>
+  </div>
+</div>
+</form>
+`
+
+//
+
+//
+var addProductBtn = document.getElementById('addProduct');
+// console.log(addProductBtn);
+
+addProductBtn.onclick = () => {
+    addWindow.classList.remove('hidden')
+    document.body.classList.add('overflow-hidden');
+}
+var closeaddWindowBtn = addWindow.querySelector('#closeAddWindow');
+closeaddWindowBtn.onclick = () => {
+    addWindow.classList.add('hidden')
+    document.body.classList.remove('overflow-hidden');
+}
+addWindow.onclick = () => {
+    addWindow.classList.add('hidden')
+    document.body.classList.remove('overflow-hidden');
+}
+var addWindowCard = addWindow.querySelector('#addWindowCard');
+addWindowCard.addEventListener('click', (e) => {
+    e.stopPropagation();
+})
+
+function saveProduct() {
+    var okBtn = addWindow.querySelector('#AWok');
+    // var item = products[Cat].find(p => p.id == Id);
+    var productToPush = {
+        id: '',
+        name: '',
+        description: '',
+        price: '',
+        category: '',
+        brand: '',
+        stock: '',
+        rate: '',
+        images: [],
+        discount: 0
+    };
+    okBtn.onclick = (e) => {
+        e.preventDefault();
+        if (!validate(addWindow)) {
+            return
+        }
+
+        productToPush.id = parseInt(addWindow.querySelector('#proId').value);
+        productToPush.images[0] = addWindow.querySelector('#AWimage1').value;
+        productToPush.images[1] = addWindow.querySelector('#AWimage2').value;
+        productToPush.images[2] = addWindow.querySelector('#AWimage3').value;
+        productToPush.name = addWindow.querySelector('#AWproductName').value;
+        productToPush.description = addWindow.querySelector('#AWproductDiscreption').value;
+        productToPush.price = parseInt(addWindow.querySelector('#AWproductPrice').value);
+        productToPush.rate = parseFloat(addWindow.querySelector('#AWproductRate').value);
+        productToPush.brand = addWindow.querySelector('#AWproductBrand').value;
+        productToPush.category = (addWindow.querySelector('#AWproductCat').value).toLowerCase();
+        productToPush.stock = parseInt(addWindow.querySelector('#AWproductStock').value);
+        productToPush.discount = parseFloat(addWindow.querySelector('#AWproductDiscount').value);
+        // console.log(item);
+        products[[productToPush.category]].push(productToPush)
+        firstProduct.push(productToPush)
+
+        refreshProductCards()
+        addWindow.classList.add('hidden')
+        document.body.classList.remove('overflow-hidden')
+    }
+}
+saveProduct();
+
+
+AttachRedAstersik(addWindow);
+
+
+
+
+function assignNamesToInputs(window) {
+    var validatedInputs = window.querySelectorAll('*[data-required]');
+    var labels = window.querySelectorAll('label');
+    // console.log(labels.);
+    var inputData = [...labels].map(label => {
+        return label.textContent.slice(0, label.textContent.length - 1);
+    })
+    validatedInputs.forEach((input, index) => {
+        input.setAttribute('name', inputData[index]);
+    })
+}
+assignNamesToInputs(addWindow)
+assignNamesToInputs(editWindow)
+
+
+function validate(windowV) {
+    //ssssssss
+    // ssssssss
+
+    // if(errors){errors.forEach(error =>{error.classList.add('hidden')})}
+    var validatedInputs = windowV.querySelectorAll('*[data-required]')
+    validatedInputs.forEach((input) => {
+        // if(windowV.querySelectorAll('.errorMsg')){input.parentNode.parentNode.removeChild(errorMsg)}
+        input.addEventListener("input", () => {
+            if (input.value.trim().length > 0) {
+                let errorMsg = input.parentNode.parentNode.querySelector('.errorMsg');
+                input.classList.remove('border', 'border-2', 'border-red-500')
+                input.parentNode.parentNode.removeChild(errorMsg)
+            }
+        });
+    });
+
+    var isValid = true;
+    let numberArray = []
+    validatedInputs.forEach((input) => {
+        if (input.value.trim().length == 0) {
+            var errorMsg = document.createElement('p');
+            errorMsg.className = "errorMsg bg-red-500 p-2 text-white rounded-lg w-half self-end";
+            errorMsg.innerText = `${input.getAttribute('name')} is required`;
+            input.classList.add('border', 'border-2', 'border-red-500')
+            // input.after(errorMsg)
+            !(input.parentNode.parentNode.querySelector('.errorMsg')) ? input.parentNode.parentNode.append(errorMsg) : ''
+            // input.parentNode.parentNode.append(errorMsg)
+            isValid = false
+        }
+        if (input.getAttribute('type') == 'number') {
+            numberArray.push(input);
+            numberArray.forEach((numInput) => {
+                if (numInput.getAttribute('id') == 'AWproductRate' || numInput.getAttribute('id') == 'EWproductRate') {
+                    if (!(numInput.value >= 1 && numInput.value <= 5)) {
+                        var errorMsg = document.createElement('p');
+                        errorMsg.className = "errorMsg bg-red-500 p-2 text-white rounded-lg w-half self-end";
+                        errorMsg.innerText = `Rate must be in range 1 to 5 e.g (1) (3.5) (5)`;
+                        !(numInput.parentNode.parentNode.querySelector('.errorMsg')) ? numInput.parentNode.parentNode.append(errorMsg) : ''
+                        numInput.classList.add('border', 'border-2', 'border-red-500')
+                        isValid = false;
+                    }
+                }
+                if (numInput.getAttribute('id') == 'AWproductDiscount' || numInput.getAttribute('id') == 'EWproductDiscount') {
+                    if (!(numInput.value >= 0 && numInput.value <= 1)) {
+                        var errorMsg = document.createElement('p');
+                        errorMsg.className = "errorMsg bg-red-500 p-2 text-white rounded-lg w-half self-end";
+                        errorMsg.innerText = `Discount must be in range 0 to 1 e.g(0) (0.1/10%) (1/100%)`;
+                        // numInput.parentNode.parentNode.append(errorMsg)
+                        !(numInput.parentNode.parentNode.querySelector('.errorMsg')) ? numInput.parentNode.parentNode.append(errorMsg) : ''
+                        numInput.classList.add('border', 'border-2', 'border-red-500')
+                        isValid = false;
+                    }
+                }
+                if (numInput.getAttribute('id') == 'AWproductPrice' || numInput.getAttribute('id') == 'EWproductPrice') {
+                    if ((Number(numInput.value) <= 0)) {
+                        var errorMsg = document.createElement('p');
+                        errorMsg.className = "errorMsg bg-red-500 p-2 text-white rounded-lg w-half self-end";
+                        errorMsg.innerText = `Price Can't be 0 or Negative`;
+                        // numInput.parentNode.parentNode.append(errorMsg)
+                        !(numInput.parentNode.parentNode.querySelector('.errorMsg')) ? numInput.parentNode.parentNode.append(errorMsg) : ''
+                        numInput.classList.add('border', 'border-2', 'border-red-500')
+                        isValid = false;
+                    }
+                }
+            })
+        }
+    })
+    return isValid;
+}
+
+
+//Tabs Slider
+
+var categoriesSection = document.getElementById('shopCats');
+function catFn() {
+    var tabsSlider = document.getElementById('btnsSlider');
+    tabsSlider.innerHTML = ''
+
+    var categories = Object.keys(products);
+    console.log(categories);
+    categories.forEach((cat) => {
+        if (cat === 'mouse') {
+            tabsSlider.innerHTML += `
+    <button class="btn bg-gray-800  border-transparent  shadow-none text-white w-[30%] md:w-[20%]" data-cat=${cat}>MICE</button>
+    `
+        }
+        else {
+            tabsSlider.innerHTML += `
+    <button class="btn bg-gray-800  border-transparent shadow-none text-white w-fit md:w-[20%]" data-cat=${cat}>${cat.toUpperCase()}S</button>
+    `
+        }
+
+    })
+    var btns = tabsSlider.querySelectorAll('.btn');
+    var btnWidth = btns[btns.length - 1].offsetWidth;
+    // console.log(btnWidth);
+
+    var slideLeft = document.getElementById('slide-left');
+    var slideRight = document.getElementById('slide-right');
+    var maxSlide = 0;
+
+    slideRight.onclick = () => {
+        if (maxSlide < btns.length - 1) {
+            maxSlide++;
+            tabsSlider.style.transform = `translateX(-${maxSlide * btnWidth}px)`;
+        }
+    }
+
+    slideLeft.onclick = () => {
+        if (maxSlide > 0) {
+            maxSlide--;
+            tabsSlider.style.transform = `translateX(-${maxSlide * btnWidth}px)`;
+        }
+    }
+
+    // [...btns].map(btn=>{
+    //     if(btn.getAttribute('data-active')==='active'){
+    //         categoriesSection.innerHTML=''
+    //         console.log(btn.getAttribute('data-active'), btn.getAttribute('data-cat'));
+    //         genFn(products[btn.getAttribute('data-cat')], categoriesSection)
+    //     }
+    //     else{
+    // btn.getAttribute('data-cat')==='pc'?btn.classList.add('!bg-blue-600'):''
+    var initiallyActive = [...btns].find(btn => btn.getAttribute('data-cat') === 'pc')
+    initiallyActive.classList.add('!bg-blue-600');
+    categoriesSection.innerHTML = ''
+    genFn(products['pc'], categoriesSection)
+    //     }
+    // })
+    // categoriesSection.innerHTML = ''
+    editProducts()
+    btns.forEach(btn => {
+        // btn.classList.remove('!bg-blue-600')
+        btn.onclick = () => {
+            btns.forEach(btn => {
+                btn.classList.remove('!bg-blue-600');
+                initiallyActive.classList.remove('!bg-blue-600')
+                btn.setAttribute('data-active', '');
+            })
+            btn.classList.add('!bg-blue-600')
+            btn.setAttribute('data-active', 'active')
+
+            categoriesSection.innerHTML = ''
+            genFn(products[btn.getAttribute('data-cat')], categoriesSection)
+            // refreshProductCards();
+            editProducts()
+        }
+    });
+}
+
+catFn();
+
+//sort by price
+var sortBtn = document.getElementById('sortProducts');
+sortBtn.addEventListener('change', () => {
+    var sortedProducts = [...firstProduct];
+    if (sortBtn.value == 'asc') {
+        sortedProducts.sort((a, b) => a.price - b.price);
+    }
+    else if (sortBtn.value == 'desc') {
+        sortedProducts.sort((a, b) => b.price - a.price);
+    }
+
+    productsSection.innerHTML = ''
+    genFn(sortedProducts, productsSection)
+    editProducts()
+})
+
+
+
+
+/*Wishlist */
+// Create Wishlist Window
+var purchaseLogWindow = document.createElement('div');
+purchaseLogWindow.className = 'fixed inset-0 bg-black/70 flex justify-center items-center hidden';
+document.body.appendChild(purchaseLogWindow);
+purchaseLogWindow.innerHTML = `
+<div class="purchaseLogCard bg-white flex flex-col gap-2 w-[90%] md:w-1/2 h-[80%] md:h-[65%] overflow-y-scroll p-4 rounded-lg">
+</div>
+`
+
+// Show Wishlist Window
+var showPurchaseLog = document.getElementById('purchaseLog');
+showPurchaseLog.onclick = () => {
+    purchaseLogWindow.classList.remove('hidden')
+    document.body.classList.add('overflow-hidden')
+}
+// Close Wishlist Window
+purchaseLogWindow.onclick = () => {
+    purchaseLogWindow.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden')
+}
+// Don't Close Window When Card Itself Is Clicked
+var purchaseLogCard = document.querySelector('.purchaseLogCard')
+
+// cartCard.innerHTML = `
+// <p class="font-bold text-2xl w-full text-center text-gray-400">Your Shopping Cart 🛒 is empty</p>
+// `
+purchaseLogCard.innerHTML = `<p class="font-bold text-2xl w-full text-center text-green-300"><i class="fas fa-money-bill"></i> Your Purchase Log Is Empty</p>`
+purchaseLogCard.addEventListener('click', (event) => {
+    event.stopPropagation();
+})
+
+
+function showPurchaseLogfn() {
+    purchaseLogCard.innerHTML = '';
+    if (purchasedItems.length === 0) {
+        purchaseLogCard.innerHTML = `<p class="font-bold text-2xl w-full text-center text-green-300"><i class="fas fa-money-bill"></i> Your Purchase Log Is Empty</p>`
+        return;
+    }
+    purchasedItems.forEach((ele) => {
+        purchaseLogCard.innerHTML += `
+             <div class="purchasedItem flex-col relative p-2 border border-gray-200 flex md:items-center md:flex-row gap-2 lg:gap-0 rounded-lg h-[90%] p-2 md:h-[80%] ">
+                 <div class="purchasedItemImg w-full p-1 md:w-[45%] flex justify-center h-[50%] md:h-[100%]">
+                     <img src="${ele.images[0]}" alt="${ele.name}" class="img  w-[100%] h-[full] md:h-[100%] object-contain">
+                 </div>
+                 <div class="purchasedItemInfo  w-[100%] lg:h-full !h-fit flex flex-col justify-center">
+                     <h1 class="font-bold ">${ele.name}</h1>
+                    <p class="flex flex-col  gap-3">
+                        <span class="badge  border border-gray-400 px-1 !text-sm rounded-lg w-fit">Item Price:</b> ${ele.price}$</span>
+                        <span class="badge  border border-gray-400 px-1 !text-sm rounded-lg w-fit">Item Discount:</b> ${ele.discount * 100}%</span>
+                        <span class="badge  border border-gray-400 px-1 !text-sm rounded-lg w-fit">Item Price After Discount:</b> ${ele.price - (ele.price * ele.discount)}$</span>
+                        <span class="badge  border border-gray-400 px-1 text-sm rounded-lg">Purchased Quantity:</b> ${ele.quantity} items</span>
+                        <span class="badge  border border-gray-400 px-1 text-sm rounded-lg">Total:</b> ${(ele.price - (ele.price * ele.discount)) * ele.quantity}$</span>
+                    </p>
+                 </div>
+             </div>`
+    })
+}
+

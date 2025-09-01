@@ -8,15 +8,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Federant&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <link rel="stylesheet" href="css/all.min.css">
     <style type="text/tailwindcss">
         @theme {
         --color-clifford: #da373d;
         --color-dodgerbue: dodgerblue;
         --color-gold:gold;
-        /* --color-Dark:#2a2e2f; */
+        --shadowX:2px 1px 7px rgba(0,0,0,0.5);
+        --color-Dark:#2a2e2f;
       }
-      
     </style>
     <style>
         .federant-regular {
@@ -27,7 +28,7 @@
     </style>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Cars Store</title>
+    <title>Techno Store</title>
 </head>
 
 <body>
@@ -45,27 +46,32 @@
                         </div>
                         <ul tabindex="0"
                             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 border ">
-                            <li><a href="#" class="text-red-400">Home</a></li>
-                            <li><a href="#" class="text-red-400">Products</a></li>
-                            <li><a href="#" class="text-red-400">Categories</a></li>
-                            <li><a href="#about" class="text-red-400">About</a></li>
+                            <li><a href="#hero" class="text-Dark ">Home</a></li>
+                            <li><a href="#shop" class="text-Dark ">Products</a></li>
+                            <li><a href="#cats" class="text-Dark ">Categories</a></li>
+                            <li><a href="#about" class="text-Dark ">About</a></li>
                         </ul>
                     </div>
                     <a class="p-2 text-xl text-white rounded-lg bg-gray-800 hidden md:block federant-regular" href="#">
-                        TechCore Store
+                        Techno Store
                     </a>
                 </div>
                 <div class="navbar-center hidden lg:flex">
                     <ul class="menu menu-horizontal px-1 gap-5">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Categories</a></li>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#shop">Products</a></li>
+                        <li><a href="#cats">Categories</a></li>
                         <li><a href="#about">About</a></li>
                     </ul>
                 </div>
                 <div class="navbar-end flex gap-3">
-                    <a class="btn relative" id="showWishList" title="Show Wish List"><span id="wishListNotification" class="absolute -top-1/2 right-0 translate-1/2 bg-red-500 text-xs flex justify-center items-center text-white p-2.5 h-3 w-3 rounded-full hidden"></span><i class="far fa-heart"></i></a>
-                    <a class="btn relative" id="showCart" title="Show Cart"><span id="cartNotification" class="absolute -top-1/2 right-0 translate-1/2 bg-red-500 text-xs flex justify-center items-center text-white p-2.5 h-3 w-3 rounded-full hidden"></span><i class="fas fa-shopping-cart"></i></a>
+                    <a class="btn relative " id="showWishList" title="Show Wish List"><span id="wishListNotification"
+                            class="absolute -top-1/2 right-0 translate-1/2 bg-red-500 text-xs flex justify-center items-center text-white p-2.5 h-3 w-3 rounded-full hidden"></span><i
+                            class="far fa-heart"></i></a>
+                    <a class="btn relative " id="showCart" title="Show Cart"><span id="cartNotification"
+                            class="absolute -top-1/2 right-0 translate-1/2 bg-red-500 text-xs flex justify-center items-center text-white p-2.5 h-3 w-3 rounded-full hidden"></span><i
+                            class="fas fa-shopping-cart"></i></a>
+                    <a class="btn" id="purchaseLog" title="Show Purchase Log"><i class="fas fa-history"></i></a>
                     <!-- <button id="toggleDarkOrLight" class="btn font-bold">O</button> -->
                 </div>
             </div>
@@ -73,14 +79,15 @@
     </header>
 
     <section
-        class="hero h-120 bg-[url('img/bg.jfif')]  bg-cover bg-center bg-no-repeat bg-black/70 bg-blend-color  flex flex-col justify-center gap-3 container-sm lg:contanier-lg">
+        class="hero h-120 bg-[url('img/bg.jfif')]  bg-cover bg-center bg-no-repeat bg-black/70 bg-blend-color  flex flex-col justify-center gap-3 container-sm lg:contanier-lg"
+        id="hero">
         <div class="container md:px-5">
             <div
                 class="hero-content backdrop-blur-sm shadow-lg bg-opacity-100 border-0 md:border  rounded-lg border-white h-fit flex flex-col gap-5 md:flex-row justify-center md:justify-around ">
                 <div class="hero-text w-half  flex gap-5 text-center card p-6">
                     <h1 class="text-xl text-white md:text-4xl font-bold ">Discover Amazing Products</h1>
                     <p class="text-white" id="typing-text"></p>
-                    <a
+                    <a href="#shop"
                         class="w-fit mx-auto btn btn-primary bg-transparent  border-white rounded-xl shadow-sm hover:shadow-white">Shop
                         Now</a>
                 </div>
@@ -90,31 +97,58 @@
             </div>
         </div>
     </section>
-    <section class="shopping my-5 bg-gray-50  py-4">
+    <section class="shopping my-5 bg-gray-50  py-4" id="shop">
         <div class="container px-5 mx-auto">
-            <div class="manage flex flex-col md:flex-row gap-3">
+            <div class="manage flex flex-col md:flex-row gap-3" data-aos="fade-left" data-aos-duration="1000">
                 <div class="search flex-1 relative border border-gray-400 flex px-5 rounded-lg" id="seachBar">
                     <i class="fas fa-search text-gray-400 absolute top-1/2 left-2 -translate-y-1/2"></i>
                     <input type="text" name="searchbar" placeholder="Search Products"
                         class="w-full h-full p-2 border border-transparent focus:outline-0" id="searchbar">
+                    <!-- <button class="btn"><i class="fas fa-filter"></i></button> -->
                 </div>
+                <select id="sortProducts" class="border p-1 rounded w-fit">
+                    <option value="">Sort By Price</option>
+                    <option value="asc">Low → High</option>
+                    <option value="desc">High → Low</option>
+                </select>
                 <div class="displayStyle" id="displayStyle">
-                    <button class="btn bg-green-600 text-white" id="toggleGrid"><i class="fas fa-table"></i></button>
-                    <button class="btn" id="toggleList"><i class="fas fa-list"></i></button>
-                    <!-- <button class="btn" id="train">WTF!!!!</button> -->
-                    <!-- <input type="text" name="" id="inp"> -->
-                    <!-- <p id="greet"></p> -->
+                    <button class="btn hidden lg:inline-flex bg-green-600 text-white" id="toggleGrid"><i
+                            class="fas fa-table"></i></button>
+                    <button class="btn hidden lg:inline-flex" id="toggleList"><i class="fas fa-list"></i></button>
                 </div>
                 <div class="addition">
                     <button class="addProduct btn btn-primary" id="addProduct"><span>+</span>Add Product</button>
                 </div>
             </div>
-            <div class="products mt-8 p-4 flex flex-col md:flex-row items-center justify-center flex-wrap gap-4" id="products">
+            <div class="products mt-8 p-4 flex flex-col md:flex-row items-center justify-center flex-wrap gap-4"
+                id="products">
 
             </div>
         </div>
     </section>
+    <section class="categories my-5 py-4 bg-base-100" id="cats">
+        <div class="container mx-auto px-5">
+            <div class="heading w-full text-center mb-6" data-aos="fade-up" data-aos-duration="1000">
+                <p class="text-lg">Categories</p>
+                <h1 class="font-bold text-xl capitalize text-gray-800">Checkout a Wide Variety Of Products Categories
+                </h1>
+            </div>
 
+            <div class="categoriesTabs flex items-center justify-center gap-2" id="categoriesTabs" data-aos="fade-right"
+                data-aos-duration="1000">
+                <button class="btn" id="slide-left"><i class="fas fa-chevron-left"></i></button>
+                <div class="border border-gray-300 rounded-sm overflow-hidden overscroll-touch" id="tabs">
+                    <div class="btnsSlider p-1 flex gap-3  nowrap" style="transition: 0.3s;" id="btnsSlider">
+                    </div>
+                </div>
+                <button class="btn" id="slide-right"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="shopCats mt-8 p-4 flex justify-center flex-col flex-wrap md:flex-row items-center w-[99%] mx-auto  gap-4"
+                id="shopCats">
+
+            </div>
+        </div>
+    </section>
     <section class="about-us my-4 py-4" id="about">
         <div class="container px-5 mx-auto">
             <div class="heading w-full text-center mb-6" data-aos="fade-up" data-aos-duration="1000">
@@ -164,18 +198,16 @@
                         </p>
                     </div>
                     <div class="about-us-img rounded">
-                        <!-- <iframe class="rounded-lg" width="100%" height="315"
+                        <iframe class="rounded-lg" width="100%" height="315"
                             src="https://www.youtube.com/embed/qsTauNWp-Hk?si=JPX-7-vnpAulu2Mb"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
-                        <img src="img/about-1.jpg" class="rounded" alt="">
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <!-- <img src="img/about-1.jpg" class="rounded" alt=""> -->
                     </div>
 
                 </div>
             </div>
-
-
         </div>
     </section>
 
@@ -237,14 +269,11 @@
             </div>
         </div>
     </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
     <script src="js/main.js"></script>
 </body>
 
 </html>
-
-
-
-
-
-
-
