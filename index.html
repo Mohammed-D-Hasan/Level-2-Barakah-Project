@@ -271,7 +271,14 @@
     </footer>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+            window.addEventListener('load', () => {
         AOS.init();
+    });
+    // Or:
+    AOS.init({
+        startEvent: 'load'
+    });
+        // AOS.init();
     </script>
     <script src="js/main.js"></script>
 </body>
